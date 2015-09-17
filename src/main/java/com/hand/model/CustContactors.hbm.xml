@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-9-16 18:09:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.hand.model.CustContactors" table="om_cust_contactors">
+        <id name="cust_id" type="int">
+            <column name="CUST_ID" />
+            <generator class="native" />
+        </id>
+<!--         <id name="cust_id" type="int"> -->
+<!--             <column name="CUST_ID"/> -->
+<!--         </id> -->
+<!--         <many-to-one name="cust_id" class="com.hand.model.CustomersInfo" insert="false" update="false" fetch="select"> -->
+<!--             <column name="cust_id" precision="15" scale="0"></column> -->
+<!--         </many-to-one> -->
+
+
+
+        <property name="mailFrom" type="java.lang.String">
+            <column name="MAILFROM" />
+        </property>
+        <property name="prePO_MailTo" type="java.lang.String">
+            <column name="PREPO_MAILTO" />
+        </property>
+        <property name="po_MailTo" type="java.lang.String">
+            <column name="PO_MAILTO" />
+        </property>
+        <property name="ocpi_MailTo" type="java.lang.String">
+            <column name="OCPI_MAILTO" />
+        </property>
+        <property name="inv_Pklist_mailto" type="java.lang.String">
+            <column name="INV_PKLIST_MAILTO" />
+        </property>
+    </class>
+</hibernate-mapping>

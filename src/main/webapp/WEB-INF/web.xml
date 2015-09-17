@@ -18,7 +18,6 @@
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
-<!-- 			classpath:spring-hibernate.xml, -->
 			classpath:applicationContext.xml
 		</param-value>
 	</context-param>
@@ -37,7 +36,7 @@
 			org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter
 		</filter-class>
 	</filter>
-	<!-- Struts2过滤器拦截所有的.action请求 -->
+<!-- 	Struts2过滤器拦截所有的.action请求 -->
 	<filter-mapping>
 		<filter-name>Struts2</filter-name>
 		<url-pattern>/*</url-pattern>	<!-- 这里不能改为/*.action，不然tomcat无法启动 -->

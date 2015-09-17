@@ -45,6 +45,15 @@
 	
 
 	<package name="basePackage" extends="struts-default">
+		
+		<!-- 新建客户 -->
+		<action name="customer*" class="com.hand.action.CustomerInfoAction" method="{1}">
+<!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+			<result name="success">/customerInquiry.jsp</result>
+			<result name="failure">/failure.jsp</result>
+			<result name="list">/customerInquiry.jsp</result>
+		</action>
+		
 	</package>
 
 </struts>

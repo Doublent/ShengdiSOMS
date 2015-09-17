@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -15,54 +16,68 @@
 	<div class="container-fruid">
 		<div class="row col-md-12">
 			<div class="divI">
-				<div class="row div1">
-					<div class="col-md-1 texthead">客户名称</div>
-					<div class="col-md-2">
-						<div class="ax_text_field">
-							<input type="text" value="" />
+				<form action="customerread.action" method="post">
+					<div class="row div1">
+						<div class="col-md-1 texthead">客户名称</div>
+						<div class="col-md-2">
+							<div class="ax_text_field">
+								<input type="text" name="cust_name" />
+							</div>
+						</div>
+						<div class="col-md-1 texthead">类型</div>
+						<div class="col-md-2">
+							<div class="ax_text_field">
+								<input type="text" name="type" />
+							</div>
+						</div>
+						<div class="col-md-1 texthead">集团公司</div>
+						<div class="col-md-5" style="width: auto;">
+							<div class="ax_text_field">
+								<input type="text" name="group_company" />
+							</div>
 						</div>
 					</div>
-					<div class="col-md-1 texthead">类型</div>
-					<div class="col-md-2">
-						<div class="ax_text_field">
-							<input type="text" value="" />
-						</div>
-					</div>
-					<div class="col-md-1 texthead">集团公司</div>
-					<div class="col-md-5" style="width: auto;">
-						<div class="ax_text_field">
-							<input type="text" value="" />
-						</div>
-					</div>
-				</div>
 
-				<div class="row div1">
-					<div class="col-md-1 texthead">客户简称</div>
-					<div class="col-md-2">
-						<div class="ax_text_field">
-							<input type="text" value="" />
+					<div class="row div1">
+						<div class="col-md-1 texthead">客户简称</div>
+						<div class="col-md-2">
+							<div class="ax_text_field">
+								<input type="text" name="cust_code" />
+							</div>
+						</div>
+						<div class="col-md-1 texthead">状态</div>
+						<div class="col-md-2">
+							<div class="ax_text_field">
+								<input type="text" name="status" />
+							</div>
+						</div>
+						<div class="col-md-1 texthead">总公司</div>
+						<div class="col-md-5" style="width: auto;">
+							<div class="ax_text_field">
+								<input type="text" name="corporation" />
+							</div>
 						</div>
 					</div>
-					<div class="col-md-1 texthead">状态</div>
-					<div class="col-md-2">
-						<div class="ax_text_field">
-							<input type="text" value="待确定" />
+					<br> <br>
+
+
+					<div class="row div1">
+						<div id="div2" class="ax_html_button">
+
+							<input class="longButton" type="submit" value="查询" />
+							<!-- 						<input class="longButton" type="submit" value="新建" /> -->
+							<!-- 						<button class="longButton"><a href="addCustomer.jsp"></a>新建</button> -->
 						</div>
 					</div>
-					<div class="col-md-1 texthead">总公司</div>
-					<div class="col-md-5" style="width: auto;">
-						<div class="ax_text_field">
-							<input type="text" value="" />
-						</div>
-					</div>
-				</div>
-				<br> <br>
-				<div class="row div1">
-					<div id="div2" class="ax_html_button">
-						<input class="longButton" type="submit" value="查询" /> <input
-							class="longButton" type="submit" value="新建" />
-					</div>
-				</div>
+
+
+				</form>
+				<button class="longButton" onclick="location.href='addCustomer.jsp'">新建</button>
+
+
+				<!-- 	----------------	红线划分	----------------	-->
+
+
 				<div class="row div1">
 					<img class="img redline" src="images/redline.png" />
 				</div>
@@ -79,70 +94,50 @@
 							<td class="info" colspan="2">详细信息</td>
 							<td class="info">客户确认</td>
 						</tr>
-						<tr class="trheight">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="trheight">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="trheight">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="trheight">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
-						<tr class="trheight">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-						</tr>
+						<s:if
+							test="#request.customersInfo == null || #request.customersInfo.size() == 0">
+							<tr>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><button class="shortButton"
+											onclick="location.href='#'" value="呵呵" name="check">查看</button></font></td>
+								<td><font style="color: gray;">无</font></td>
+								<td><font style="color: gray;">无</font></td>
+							</tr>
+						</s:if>
+						<s:else>
+							<s:iterator value="#request.customersInfo" status="st">
+								<tr>
+									<td><s:property value="#st.getIndex()+1" /></td>
+									<td>${cust_name }</td>
+									<td>${cust_code }</td>
+									<td>${market_area }</td>
+									<td>${business_manager }</td>
+									<td>${business_assistant }</td>
+									<td>${status }</td>
+
+									<td><button class="shortButton"
+											onclick="location.href='#'" value="呵呵" name="check">查看</button></td>
+									<td><button class="shortButton"
+											onclick="location.href='#'">编辑</button></td>
+									<td><button class="shortButton"
+											onclick="location.href='#'">确认</button></td>
+								</tr>
+							</s:iterator>
+						</s:else>
+
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
 </body>
+<script>
+alert($('button[name="check"]').val());
+</script>
 </html>

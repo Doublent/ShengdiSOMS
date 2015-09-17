@@ -15,11 +15,15 @@
 	margin-left: 10px;
 	margin-right: 10px;
 }
+.shortButton{
+	margin: auto;
+}
 .redline{
 	margin-top: 15px;
 	width: 100%;
 }
 #tablesize{
+	text-align:center;
 	margin-top:30px;
 	width: 90%;
 }
@@ -52,6 +56,11 @@
 	height: 30px;
 }
 .divright{
-	margin-right:20%;
+	margin-right:10%;
 	float: right;
+}
+.divmiddle{
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left: 30%;
 }
