@@ -55,16 +55,13 @@ public class NormalDiscountServiceImpl implements NormalDiscountService {
 	@Override
 	public List<NormalDiscount> findByCondition(NormalDiscount normalDiscount) {
 		String condition = "";
-		System.out.println("l = " + normalDiscount.getDiscount_name().trim().length());
 		if (normalDiscount.getDiscount_name().trim().length() != 0) {
-			System.out.println("Discount_name=" + normalDiscount.getDiscount_name());
 			condition += " and discount_name = '" + normalDiscount.getDiscount_name() + "'";
 		}
 		if (normalDiscount.getType().trim().length() != 0) {
-			System.out.println("Type=" + normalDiscount.getType());
 			condition += " and type = '" + normalDiscount.getType() + "'";
 		}
-		System.out.println(condition);
+		System.out.println("HQL = " + condition);
 		if (condition.trim() == "" || condition == null) {
 			return this.findAll();
 		} else {
