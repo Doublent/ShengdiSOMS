@@ -1,0 +1,28 @@
+@CHARSET "UTF-8";
+.div0{
+	text-align:center;
+}
+#div1{
+/* 	margin-left: 20px; */
+	margin-top: 10px;
+}
+#text{
+	
+}
+.longButton{
+	width: 90px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+#redline{
+	margin-top: 15px;
+}
+#tablesize{
+	margin-top:30px;
+	margin-left:10%;
+	width: 80%;
+	height: 80%;
+}
+.trheight{
+	height: 30px;
+}

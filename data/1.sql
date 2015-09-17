@@ -1,0 +1,30 @@
+CREATE TABLE `om_customers_info` (
+`customer_id`  int(10) NOT NULL AUTO_INCREMENT ,
+`customer_name`  varchar(120) NOT NULL ,
+`type`  varchar(8) NOT NULL ,
+`customer_code`  varchar(10) NOT NULL ,
+`Group_company`  varchar(10) NULL ,
+`Corporation`  varchar(10) NULL ,
+`country`  varchar(20) NOT NULL ,
+`City`  varchar(20) NULL ,
+`Address1`  varchar(100) NULL ,
+`Address2`  varchar(100) NULL ,
+`postcode`  varchar(15) NULL ,
+`port_of_destination`  varchar(20) NOT NULL ,
+`shipping_mark`  varchar(100) NOT NULL ,
+`status`  varchar(6) NOT NULL ,
+`invoice_group`  varchar(20) NULL ,
+`currency`  varchar(3) NOT NULL ,
+`payment_methor`  varchar(120) NOT NULL ,
+`price_term1`  varchar(100) NULL ,
+`price_term2`  varchar(100) NULL ,
+`price_term3`  varchar(100) NULL ,
+`markup_name`  varchar(20) NOT NULL ,
+`discount_name`  varchar(20) NOT NULL ,
+`Market_area`  varchar(10) NOT NULL ,
+`business_manager`  varchar(15) NOT NULL ,
+`business_assistant`  varchar(15) NOT NULL ,
+PRIMARY KEY (`customer_id`)
+)
+;
+

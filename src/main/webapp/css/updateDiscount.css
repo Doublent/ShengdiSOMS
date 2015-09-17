@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.container div {
+	text-align: left;
+}
+
+.container div label {
+	padding-left: 20px;
+	color: red;
+}
+
+.line {
+	margin-top: 5px;
+}
+
+#updateDiscount-form{
+	/* 	width:100%; */
+	text-align: center;
+}
+
+tr.form-group input {
+	text-align: right;
+}
