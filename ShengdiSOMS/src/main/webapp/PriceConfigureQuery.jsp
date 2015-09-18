@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="com.hand.action.priceAllocationAction"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
 <%
 	String path = request.getContextPath();
 	String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort()
@@ -9,7 +9,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<title>价格表配置(新增)</title>
+<title>价格表配置(查询/修改)</title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 <link href="css/PriceConfigure.css" type="text/css" rel="stylesheet" />
 <script src="js/jquery-1.11.3.min.js"></script>
@@ -79,26 +79,34 @@
 									<table>
 										<tr>
 											<td width="200px"></td>
-											<td><input class="longButton" type="button"
-												 value="查询/修改" onclick="testButtonQuery()" /></td>
+											<td><input class="longButton" type="submit"
+												 value="查询/修改" onclick="firm()" /></td>
 											<td width="20px"></td>
 											<td><input class="longButton" type="button"
 												value="保存" /></td>
 											<td width="60px"></td>
-											<td><input class="longButton" type="submit" value="新增配置"
-												onclick="newconfi()" /></td>
+											<td><input class="longButton" type="button" value="新增配置"
+												onclick="testButtonConfi()" /></td>
 										</tr>
 									</table>
 									<script type="text/javascript">
-									function testButtonQuery(){
-										window.location="PriceConfigureQuery.jsp";
-
-										}
-										function newconfi() {
-											document.form1.action="priceAllocationAction!newcofig.action";
+						
+										function firm() {//利用对话框返回的值 （true 或者 false）
+											document.form1.action="priceAllocationAction!list.action";
 											document.form1.submit();
-											                                                
+// 											if (confirm("你确定选择要查询？")) {//如果是true ，那么就响应价格表配置的 " 查询  "方法.否则,弹出下一个提示框
+// 												document.form1.action="priceAllocationAction!list.action";
+// 												document.form1.submit();
+// 											}
+// 											if (confirm("你确定选择修改吗?")) {//如果是true ，那么就响应价格表配置的 " 修改  "方法.否则,关闭提示框
+// 												document.form1.action="";
+// 											}
 										}
+										
+										function testButtonConfi(){
+											window.location="PriceConfigure.jsp";
+
+											}
 									</script>
 								</div>
 							</div>
@@ -112,15 +120,8 @@
 				</div>
 				<div id="contentBottom">
 					<div class="show">
-						<%
-                
-			     String activity=request.getParameter("activity");
-			     String price_list_col=request.getParameter("price_list_col");
-			     String serial_number=request.getParameter("serial_number");
-			     
-			     
-               %>
-						<div id="tablesize">
+              		<div id="tablesize">
+						   <s:if test="#request.priceAllocations !=null">
 							<table class="table table-bordered table-hover">
 								<tr>
 									<th class="info">序号</th>
@@ -129,58 +130,19 @@
 									<th class="info">EXCEL列</th>
 									<th class="info">启用</th>
 								</tr>
+								 <s:iterator value="#request.priceAllocations"> 
 								<tr class="trheight">
-									<td><%=serial_number %></td>
-									<td><%=price_list_col %></td>
+									<td>${serial_number}</td>
+									<td>${price_list_col}</td>
 									<td></td>
 									<td></td>
-									<td><%=activity %></td>
+									<td>${activity}</td>
 								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
-								<tr class="trheight">
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-								</tr>
+								</s:iterator> 
 							</table>
+							</s:if> 
 						</div>
-
+                             
 					</div>
 				</div>
 			</div>

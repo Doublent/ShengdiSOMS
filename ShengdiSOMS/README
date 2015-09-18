@@ -2,3 +2,4 @@ mvn clean
 mvn compile
 mvn tomcat:run
 http://localhost:8080/ShengdiSOMS/index.jsp
+版本说明：价格表配置模块的(初步的新增和查询功能)
