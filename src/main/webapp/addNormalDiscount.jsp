@@ -16,7 +16,14 @@
 	$(document).ready(function() {
 		
 	});
-	function changeValue(obj) {
+	function changeType(obj) {
+		var _value = $(obj).val();
+		if(_value == "通用加价") {
+			$('select[name="normalDiscount.discount_base"]').val("数量");
+			$("#base_qty").replaceWith("<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty'/>");
+		}
+	}
+	function changeDiscount_base(obj) {
 		var _value = $(obj).val();
 		if(_value == "数量") {
 			$("#base_qty").replaceWith("<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty'/>");
@@ -28,7 +35,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-12 col-md-pull-1">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
@@ -51,18 +58,18 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="col-md-12">
+							<tr>
 								<td><input type="text" class="form-control" value="1"
 									name="id" disabled/></td>
 								<td><input type="text" class="form-control"
 									name="normalDiscount.discount_name" /></td>
-								<td><select class="form-control" name="normalDiscount.type"
-									style="width: 120px">
+								<td><select class="form-control" onchange="changeType(this)" 
+									name="normalDiscount.type" style="width: 120px">
 										<option value="一般折扣">一般折扣</option>
 										<option value="通用加价">通用加价</option>
 								</select></td>
 								<!-- <td><input type="text" class="form-control" name="normalDiscount.discount_base" /></td> -->
-								<td><select class="form-control" onchange="changeValue(this)"
+								<td><select class="form-control" onchange="changeDiscount_base(this)"
 									name="normalDiscount.discount_base" style="width: 100px">
 										<option value="金额">金额</option>
 										<option value="单价">单价</option>
@@ -72,14 +79,19 @@
 									name="normalDiscount.base_qty" disabled /></td>
 								<td><input type="text" class="form-control"
 									name="normalDiscount.discount_rate" /></td>
-								<td><input type="text" class="form-control"
-									name="normalDiscount.activity" value="是"/></td>
+								<td><select class="form-control"
+									name="normalDiscount.activity" style="width: 80px;">
+										<option selected value="是">是</option>
+										<option value="否">否</option>
+								</select></td>
+<!-- 								<td><input type="text" class="form-control" -->
+<!-- 									name="normalDiscount.activity" value="是"/></td> -->
 							</tr>
 							<tr>
 							
 								<td colspan="7">
-								<button class="btn btn-default pull-left" onclick="<script>history.go(-1)</script>">返回</button>
-								<input class="btn btn-default pull-right"
+								<button type="button" class="btn btn-default pull-left col-md-1" onclick="history.go(-1)">返回</button>
+								<input class="btn btn-default pull-right col-md-1"
 									type="submit" value="保存" /></td>
 							</tr>
 

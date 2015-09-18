@@ -6,11 +6,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<frameset rows="25%,75%">
-	<frame src="header.jsp">
-	<frameset cols="25%,75%">
-		<frame src="guide.jsp">
-		<frame src="content.jsp" name="contentframe">
+<frameset rows="220px,850px" frameborder="no" style="width:100%;margin-left:100px;">
+	<frame src="header.jsp" noresize="noresize">
+	<frameset cols="18%,82%">
+		<frame src="guide.jsp" noresize="noresize">
+		<frame src="content.jsp" name="contentframe" noresize="noresize">
 	</frameset>
 </frameset>
 </html>

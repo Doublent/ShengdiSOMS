@@ -14,7 +14,7 @@
 <!--     <script src="js/bootstrap.min.js"></script> -->
 </head>
 <body>
-	<div class="container">
+	<div class="container-fruid">
         <img src="images/logo.png">
     </div>
 

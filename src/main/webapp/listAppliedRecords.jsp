@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib prefix="s" uri="/struts-tags" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -16,9 +16,10 @@
 </head>
 <body>
 	<div class="container">
-		<div id="dixcount-message-table" class="col-md-10 col-md-offset-1"
-				 style="overflow:scroll; height:200px; width: 100%">
-			<table
+		
+		<div id="dixcount-message-table" class="col-md-10 col-md-pull-1"
+			style="overflow: scroll; height: 500px; width: 100%">
+			<table border="0" cellspacing="0" cellpadding="0" 
 				class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
 					<tr>
@@ -33,9 +34,12 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%
+						int id = 0;
+					%>
 					<s:iterator id="dar" value="#request.discountAppliedRecords">
 						<tr>
-							<td><s:property value="" /></td>
+							<td><%=++id%></td>
 							<td><s:property value="#dar.discount_name" /></td>
 							<td><s:property value="#dar.cust_code" /></td>
 							<td><s:property value="#dar.dn_identify_num" /></td>
@@ -45,9 +49,12 @@
 							<td><s:property value="#dar.cancel_date" /></td>
 						</tr>
 					</s:iterator>
+
 				</tbody>
 			</table>
 		</div>
+		<button type="button" class="btn btn-default col-lg-2 col-lg-offset-4"
+			onclick="history.go(-1)" style="font-size: large;margin-top: 20px">返回</button>
 	</div>
 </body>
 </html>

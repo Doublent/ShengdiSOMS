@@ -19,7 +19,7 @@ public class DiscountAppliedRecords {
 	private String	discount_name;
 	private String	cust_code;
 	private String	dn_identify_num;
-	private String	applied_amount;
+	private double	applied_amount;
 	private Date	applied_date;
 	private String	cancel;
 	private Date	cancel_date;
@@ -76,11 +76,11 @@ public class DiscountAppliedRecords {
 	}
 
 	@Column(name = "Applied_amount")
-	public String getApplied_amount() {
+	public double getApplied_amount() {
 		return applied_amount;
 	}
 
-	public void setApplied_amount(String applied_amount) {
+	public void setApplied_amount(double applied_amount) {
 		this.applied_amount = applied_amount;
 	}
 

@@ -14,27 +14,32 @@
 
 <script>
 	$(document).ready(function() {
-		
+
 	});
 	function changeValue(obj) {
 		var _value = $(obj).val();
-		if(_value == "数量") {
-			$("#base_qty").replaceWith("<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty'/>");
+		if (_value == "数量") {
+			$("#base_qty")
+					.replaceWith(
+							"<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty'/>");
 		} else {
-			$("#base_qty").replaceWith("<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty' disabled/>");
+			$("#base_qty")
+					.replaceWith(
+							"<input id='base_qty' type='text' class='form-control' name='normalDiscount.base_qty' disabled/>");
 		}
 	}
 </script>
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-12 col-md-pull-1">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
 			<div class="line"></div>
 			<div id="dixcount-message-table">
-				<s:form action="normalDiscountAction!updateNormalDiscount.action?normalDiscount.discount_id=%{normalDiscount.discount_id}"
+				<s:form
+					action="normalDiscountAction!updateNormalDiscount.action?normalDiscount.discount_id=%{normalDiscount.discount_id}"
 					method="post">
 					<table id="updateDiscount-form"
 						class="table table-striped table-bordered table-condensed">
@@ -51,10 +56,11 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="col-md-12">
-								<td><input type="text" class="form-control" value="${normalDiscount.discount_id}"
-									name="id" disabled/></td>
-								<td><input type="text" class="form-control" value="${normalDiscount.discount_name}"
+							<tr>
+								<td><input type="text" class="form-control"
+									value="${normalDiscount.discount_id}" name="id" disabled /></td>
+								<td><input type="text" class="form-control"
+									value="${normalDiscount.discount_name}"
 									name="normalDiscount.discount_name" /></td>
 								<td><select class="form-control" name="normalDiscount.type"
 									style="width: 120px">
@@ -62,25 +68,32 @@
 										<option value="通用加价">通用加价</option>
 								</select></td>
 								<!-- <td><input type="text" class="form-control" name="normalDiscount.discount_base" /></td> -->
-								<td><select class="form-control" onchange="changeValue(this)"
+								<td><select class="form-control"
+									onchange="changeValue(this)"
 									name="normalDiscount.discount_base" style="width: 100px">
 										<option value="金额">金额</option>
 										<option value="单价">单价</option>
 										<option value="数量">数量</option>
 								</select></td>
-								<td><input id="base_qty" type="text" class="form-control" value="${normalDiscount.base_qty}"
+								<td><input id="base_qty" type="text" class="form-control"
+									value="${normalDiscount.base_qty}"
 									name="normalDiscount.base_qty" disabled /></td>
-								<td><input type="text" class="form-control" value="${normalDiscount.discount_rate}"
+								<td><input type="text" class="form-control"
+									value="${normalDiscount.discount_rate}"
 									name="normalDiscount.discount_rate" /></td>
-								<td><input type="text" class="form-control" value="${normalDiscount.activity}"
-									name="normalDiscount.activity"/></td>
+								<td><input type="text" class="form-control"
+									value="${normalDiscount.activity}"
+									name="normalDiscount.activity" /></td>
 							</tr>
 							<tr>
-							
+
 								<td colspan="7">
-								<button class="btn btn-default pull-left" onclick="<script>history.go(-1)</script>">返回</button>
-								<input class="btn btn-default pull-right"
-									type="submit" value="保存" /></td>
+									<button type="button"
+										class="btn btn-default pull-left col-md-1"
+										onclick="history.go(-1)">返回</button> <input
+									class="btn btn-default pull-right col-md-1" type="submit"
+									value="保存" />
+								</td>
 							</tr>
 
 						</tbody>

@@ -13,18 +13,24 @@
 <script src="js/bootstrap.min.js"></script>
 
 <script>
-	$(document).ready(function() {
-		$("input[name='specialDiscount.amount']").on("keyup",getBalance);
-		$("input[name='specialDiscount.applied_amount']").on("change",getBalance);
-	});
+	$(document).ready(
+			function() {
+				$("input[name='specialDiscount.amount']").on("keyup",
+						getBalance);
+				$("input[name='specialDiscount.applied_amount']").on("change",
+						getBalance);
+			});
 	function getBalance() {
-		$("input[name='specialDiscount.balance']").val($("input[name='specialDiscount.amount']").val() - $("input[name='specialDiscount.applied_amount']").val());
+		$("input[name='specialDiscount.balance']").val(
+				$("input[name='specialDiscount.amount']").val()
+						- $("input[name='specialDiscount.applied_amount']")
+								.val());
 	}
 </script>
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-12 col-md-pull-1">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
@@ -46,7 +52,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="col-md-12">
+							<tr>
 								<td><input type="text" class="form-control"
 									value="${specialDiscount.discount_name}"
 									name="specialDiscount.discount_name" /></td>
@@ -69,8 +75,8 @@
 							</tr>
 							<tr>
 								<td colspan="7">
-									<button class="btn btn-default pull-left"
-										onclick="<script>history.go(-1)</script>">返回</button> <input
+									<button type="button" class="btn btn-default pull-left col-md-1"
+										onclick="history.go(-1)">返回</button> <input
 									class="btn btn-default pull-right" type="submit" value="保存" />
 								</td>
 							</tr>

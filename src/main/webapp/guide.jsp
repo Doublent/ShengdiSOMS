@@ -12,9 +12,9 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
-    <script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-1.11.3.min.js"></script>
 <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="navbar nav-list" role="navigation">
@@ -28,23 +28,19 @@
 			<div class="row">
 				<div class="col-md-3">
 					<ul id="main-nav" class="nav nav-tabs nav-stacked">
-						<li class="active"><a href="#welcome" data-toggle="tab">
-								<i class="glyphicon glyphicon-th-large"></i> 首页
+						<li><a href="default.jsp" data-toggle="tab"> <i
+								class="glyphicon glyphicon-th-large"></i> 首页
 						</a></li>
-						<li><a href="" data-toggle="tab"> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
+						<li><a href="" data-toggle="tab"> <i
 								class="glyphicon glyphicon-credit-card"></i> 销售订单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
+						<li><a href="" data-toggle="tab"> <i
 								class="glyphicon glyphicon-credit-card"></i> 发货单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
+						<li><a href="" data-toggle="tab"> <i
 								class="glyphicon glyphicon-credit-card"></i> 制单界面
 						</a></li>
-						<li><a href=""> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
+						<li><a href=""> <i
 								class="glyphicon glyphicon-credit-card"></i> orderbase维护
 						</a></li>
 						<li><a href="#mainDataList"
@@ -67,29 +63,29 @@
 									<ul id="discountManageList"
 										class="nav nav-list collapse thirdmenu"
 										style="padding-left: 30px">
-										<li><a href="normalDiscount.jsp" target="contentframe">
-										<i class="glyphicon glyphicon-th-list"></i>经常性折扣</a></li>
-										<li><a href="specialDiscount.jsp" target="contentframe"><i
+										<li><a
+											href="normalDiscountAction!listNormalDiscount.action"
+											target="contentframe"> <i
+												class="glyphicon glyphicon-th-list"></i>经常性折扣
+										</a></li>
+										<li><a
+											href="specialDiscountAction!listSpecialDiscount.action"
+											target="contentframe"><i
 												class="glyphicon glyphicon-th-list"></i>一次性折扣</a></li>
 									</ul></li>
 							</ul></li>
-						<li><a href=""> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
-								class="glyphicon glyphicon-credit-card"></i> 系统设置
+						<li><a href=""><i class="glyphicon glyphicon-credit-card"></i>
+								系统设置 </a></li>
+
+						<li><a href=""> <i class="glyphicon glyphicon-user"></i>
+								用户管理 <%--<span class="label label-warning pull-right">5</span>--%>
 						</a></li>
 
-						<li><a href=""> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
-								class="glyphicon glyphicon-user"></i> 用户管理 <%--<span class="label label-warning pull-right">5</span>--%>
+						<li><a href=""> <i class="glyphicon glyphicon-calendar"></i>
+								权限管理
 						</a></li>
-
-						<li><a href=""> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
-								class="glyphicon glyphicon-calendar"></i> 权限管理
-						</a></li>
-						<li><a href=""> <span
-								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
-								class="glyphicon glyphicon-fire"></i> 报表管理
+						<li><a href=""> <i class="glyphicon glyphicon-fire"></i>
+								报表管理
 						</a></li>
 					</ul>
 				</div>
@@ -98,16 +94,19 @@
 	</div>
 </body>
 <script>
-    $(".hasdown").click(function(){
-        var obj = $(this).children("span");
-        var breadcrumb = $(".breadcrumb");
-        if(obj.hasClass("glyphicon-chevron-right")) {
-            obj.removeClass().addClass("pull-right glyphicon glyphicon-chevron-down");
-            breadcrumb.append('<li><a href="#">'+$(this).text()+'</a></li>')
-        }
-        else {
-            obj.removeClass().addClass("pull-right glyphicon glyphicon-chevron-right");
-        }
-    })
+	$(".hasdown").click(
+			function() {
+				var obj = $(this).children("span");
+				var breadcrumb = $(".breadcrumb");
+				if (obj.hasClass("glyphicon-chevron-right")) {
+					obj.removeClass().addClass(
+							"pull-right glyphicon glyphicon-chevron-down");
+					breadcrumb.append('<li><a href="#">' + $(this).text()
+							+ '</a></li>')
+				} else {
+					obj.removeClass().addClass(
+							"pull-right glyphicon glyphicon-chevron-right");
+				}
+			})
 </script>
 </html>

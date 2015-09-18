@@ -1,5 +1,7 @@
 package com.hand.service.impl;
 
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import org.junit.Test;
@@ -32,9 +34,42 @@ public class SpecialDiscountServiceImpl implements SpecialDiscountService {
 		this.specialDiscountDao.remove(specialDiscount);
 	}
 
+	@Test
 	@Override
 	public List<SpecialDiscount> findAll() {
-		return this.specialDiscountDao.findALL();
+		List<SpecialDiscount> specialDiscountList = this.specialDiscountDao.findALL();
+		for (int i = 0; i < specialDiscountList.size(); i++) {
+			SpecialDiscount sd = specialDiscountList.get(i);
+			Iterator<DiscountAppliedRecords> discountAppliedRecordsIterator = this
+					.findAppliedRecordsById(sd.getDiscount_id()).iterator();
+			double appliedAmount = 0;
+			while (discountAppliedRecordsIterator.hasNext()) {
+				appliedAmount += discountAppliedRecordsIterator.next().getApplied_amount();
+			}
+			specialDiscountList.get(i).setApplied_amount(appliedAmount);
+			specialDiscountList.get(i).setBalance(
+					specialDiscountList.get(i).getAmount() - specialDiscountList.get(i).getApplied_amount());
+		}
+
+		return specialDiscountList;
+		// List<SpecialDiscount> specialDiscounts = new ArrayList<>();
+		// Iterator<SpecialDiscount> iterator = specialDiscountList.iterator();
+		// while(iterator.hasNext()) {
+		// SpecialDiscount temp = iterator.next();
+		//
+		// List<DiscountAppliedRecords> discountAppliedRecordsList =
+		// this.findAppliedRecordsById(temp.getDiscount_id());
+		// Iterator<DiscountAppliedRecords> iterator2 =
+		// discountAppliedRecordsList.iterator();
+		// double appliedAmount = 0;
+		// while(iterator2.hasNext()) {
+		// appliedAmount += iterator2.next().getApplied_amount();
+		// }
+		// temp.setApplied_amount(appliedAmount);
+		// specialDiscounts.add(temp);
+		// specialDiscounts.get(1);
+		// }
+		// return specialDiscountList;
 	}
 
 	@Override
@@ -62,7 +97,22 @@ public class SpecialDiscountServiceImpl implements SpecialDiscountService {
 		if (condition.trim() == "" || condition == null) {
 			return this.findAll();
 		} else {
-			return specialDiscountDao.findByCondition(condition);
+			
+			List<SpecialDiscount> specialDiscountList = this.specialDiscountDao.findByCondition(condition);
+			for (int i = 0; i < specialDiscountList.size(); i++) {
+				SpecialDiscount sd = specialDiscountList.get(i);
+				Iterator<DiscountAppliedRecords> discountAppliedRecordsIterator = this
+						.findAppliedRecordsById(sd.getDiscount_id()).iterator();
+				double appliedAmount = 0;
+				while (discountAppliedRecordsIterator.hasNext()) {
+					appliedAmount += discountAppliedRecordsIterator.next().getApplied_amount();
+				}
+				specialDiscountList.get(i).setApplied_amount(appliedAmount);
+				specialDiscountList.get(i).setBalance(
+						specialDiscountList.get(i).getAmount() - specialDiscountList.get(i).getApplied_amount());
+			}
+			
+			return specialDiscountList;
 		}
 	}
 

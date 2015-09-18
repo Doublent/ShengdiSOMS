@@ -11,29 +11,29 @@
 	rel="stylesheet">
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/style.css" rel="stylesheet">
-<link href="css/normalDiscount.css" rel="stylesheet">
-<script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
 <script src="js/jquery-1.11.3.min.js"></script>
-<script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<div id="add-find-form" class="col-md-12">
+		<div class="row">
+		<div id="add-find-form" class="col-md-12 col-md-pull-1 form-inline">
 			<form action="normalDiscountAction!findByCondition.action" method="get">
-				<label class="col-md-2">折扣名称</label>
-				<input class="col-md-3" type="text" name="normalDiscount.discount_name"/>
-				<label class="col-md-2">类型</label>
-				<input class="col-md-3" type="text" name="normalDiscount.type" />
-				<div class="add_find col-md-12">
-					<button onclick="location.href='addNormalDiscount.jsp'" type="button" class="col-md-1 col-md-offset-4">新增</button>
-					<input class="col-md-1 col-md-offset-1" type="submit" value="查阅" />
+				<div class="control-group">
+					<label class="col-md-1 col-md-offset-2 control-label">折扣名称</label>
+					<input class="col-md-3 form-control" type="text" name="normalDiscount.discount_name"/>
+					<label class="col-md-1 col-md-offset-1 control-label">类型</label>
+					<input class="col-md-3 form-control" type="text" name="normalDiscount.type" />
+				</div>
+				<div class="add_find col-md-12" style="margin-top: 30px">
+					<button onclick="location.href='addNormalDiscount.jsp'" type="button" class="btn btn-default col-md-1 col-md-offset-4">新增</button>
+					<input class="btn btn-default col-md-1 col-md-offset-1" type="submit" value="查阅" />
 				</div>
 			</form>
 		</div>
-		<div class="line col-md-12"></div>
-		<div id="dixcount-message-table" class="col-md-10 col-md-offset-1"
-				 style="overflow:scroll; height:200px; width: 100%">
+		<div class="line col-md-12 col-md-pull-1"></div>
+		<div id="dixcount-message-table" class="col-md-10 col-md-pull-1"
+				 style="overflow:scroll; height:500px; width: 100%">
 			<table
 				class="table table-striped table-bordered table-hover table-condensed">
 				<thead>
@@ -50,9 +50,11 @@
 					</tr>
 				</thead>
 				<tbody>
+					<%int id=0; %>
 					<s:iterator id="nd" value="#request.normalDiscounts">
 						<tr>
-							<td><s:property value="#nd.discount_id" /></td>
+							<td><%=++id %></td>
+<%-- 							<td><s:property value="#nd.discount_id" /></td> --%>
 							<td><s:property value="#nd.discount_name" /></td>
 							<td><s:property value="#nd.type" /></td>
 							<td><s:property value="#nd.discount_base" /></td>
@@ -66,6 +68,7 @@
 					</s:iterator>
 				</tbody>
 			</table>
+		</div>
 		</div>
 	</div>
 </body>

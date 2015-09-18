@@ -24,7 +24,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12">
+		<div class="col-md-12 col-md-pull-1">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
@@ -45,7 +45,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr class="col-md-12">
+							<tr>
 								<td><input type="text" class="form-control"
 									name="specialDiscount.discount_name" /></td>
 								<td><input type="text" class="form-control" 
@@ -65,8 +65,8 @@
 							</tr>
 							<tr>
 								<td colspan="7">
-								<button class="btn btn-default pull-left" onclick="<script>history.go(-1)</script>">返回</button>
-								<input class="btn btn-default pull-right"
+								<button type="button" class="btn btn-default pull-left col-md-1" onclick="history.go(-1)">返回</button>
+								<input class="btn btn-default pull-right col-md-1"
 									type="submit" value="保存" /></td>
 							</tr>
 
