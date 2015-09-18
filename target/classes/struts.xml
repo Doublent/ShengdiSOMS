@@ -52,6 +52,8 @@
 			<result name="success">/customerInquiry.jsp</result>
 			<result name="failure">/failure.jsp</result>
 			<result name="list">/customerInquiry.jsp</result>
+			<result name="check">/checkCustomer.jsp</result>
+			<result name="edit">/customerEdit.jsp</result>
 		</action>
 		
 	</package>

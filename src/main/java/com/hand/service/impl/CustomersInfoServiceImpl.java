@@ -34,6 +34,35 @@ public class CustomersInfoServiceImpl implements CustomersInfoService {
 		
 	}
 	
+	@Override
+	public List<CustomersInfo> read4ID(Integer cust_id) {
+		
+		return customersInfoDao.read4ID(cust_id);
+		
+	}
+
+	@Override
+	public void confirm(Integer cust_id, String status) {
+		
+		customersInfoDao.confirm(cust_id, status); 
+		
+	}
+
+	@Override
+	public void update(CustomersInfo customersInfo) {
+		
+		customersInfoDao.update(customersInfo);
+		
+	}
+
+	@Override
+	public CustomersInfo get(Integer cust_id) {
+		
+		return customersInfoDao.get(cust_id);
+		
+	}
+
+	
 	
 
 }

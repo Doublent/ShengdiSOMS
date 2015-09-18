@@ -20,10 +20,18 @@ public interface CustomersInfoDao {
 	   
 	   public List<CustomersInfo> read(String cust_name);
 	   
+	   public List<CustomersInfo> read4ID(Integer cust_id);
+	   
 	   public List<CustomersInfo> readAll();
 	   
 	   public void delete(Integer id);
 	   
-	   public void update(Integer id ,String str);
+	   public void update(CustomersInfo customersInfo);
+	   
+	   public void confirm(Integer cust_id ,String status);
+	   
+	   public CustomersInfo get(Integer cust_id);
+	   
+//	   public void check(Integer cust_id);
 	   
 }

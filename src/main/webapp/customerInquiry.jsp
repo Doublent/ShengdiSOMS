@@ -65,6 +65,8 @@
 						<div id="div2" class="ax_html_button">
 
 							<input class="longButton" type="submit" value="查询" />
+							<button class="longButton" type="button"
+								onclick="location.href='addCustomer.jsp'">新建</button>
 							<!-- 						<input class="longButton" type="submit" value="新建" /> -->
 							<!-- 						<button class="longButton"><a href="addCustomer.jsp"></a>新建</button> -->
 						</div>
@@ -72,7 +74,6 @@
 
 
 				</form>
-				<button class="longButton" onclick="location.href='addCustomer.jsp'">新建</button>
 
 
 				<!-- 	----------------	红线划分	----------------	-->
@@ -104,8 +105,7 @@
 								<td><font style="color: gray;">无</font></td>
 								<td><font style="color: gray;">无</font></td>
 								<td><font style="color: gray;">无</font></td>
-								<td><button class="shortButton"
-											onclick="location.href='#'" value="呵呵" name="check">查看</button></font></td>
+								<td><font style="color: gray;">无</font></td>
 								<td><font style="color: gray;">无</font></td>
 								<td><font style="color: gray;">无</font></td>
 							</tr>
@@ -122,11 +122,11 @@
 									<td>${status }</td>
 
 									<td><button class="shortButton"
-											onclick="location.href='#'" value="呵呵" name="check">查看</button></td>
+											onclick="location.href='customercheck.action?cust_id=${cust_id}'">查看</button></td>
 									<td><button class="shortButton"
-											onclick="location.href='#'">编辑</button></td>
+											onclick="location.href='customeredit.action?cust_id=${cust_id}'">编辑</button></td>
 									<td><button class="shortButton"
-											onclick="location.href='#'">确认</button></td>
+											onclick="location.href='customerconfirm.action?cust_id=${cust_id}'">确认</button></td>
 								</tr>
 							</s:iterator>
 						</s:else>
@@ -137,7 +137,4 @@
 		</div>
 	</div>
 </body>
-<script>
-alert($('button[name="check"]').val());
-</script>
 </html>

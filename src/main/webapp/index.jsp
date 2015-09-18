@@ -130,7 +130,7 @@
                     </div>
                     
                     <div class="tab-pane" id="customerInquiry">
-	                    <jsp:include page="customerMaintenance.jsp"></jsp:include>
+	                    <jsp:include page="customerEdit.jsp"></jsp:include>
                     </div>
 
                 </div>

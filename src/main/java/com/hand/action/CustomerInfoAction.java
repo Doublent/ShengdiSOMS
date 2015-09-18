@@ -2,6 +2,10 @@ package com.hand.action;
 
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.interceptor.RequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,18 +13,27 @@ import com.hand.model.CustContactors;
 import com.hand.model.CustomersInfo;
 import com.hand.service.CustContactorsService;
 import com.hand.service.CustomersInfoService;
+import com.mysql.fabric.Response;
 import com.opensymphony.xwork2.ActionSupport;
 
 @SuppressWarnings("serial")
-public class CustomerInfoAction extends ActionSupport implements RequestAware{
-	
-//	注入customersInfoService
+public class CustomerInfoAction extends ActionSupport implements RequestAware {
+
+	// 注入customersInfoService
 	@Autowired
 	private CustomersInfoService customersInfoService;
-//	@Autowired
-//	private CustContactorsService custContactorsService;
-	
+	// @Autowired
+	// private CustContactorsService custContactorsService;
 
+	// private CustomersInfo customersInfo;
+	//
+	// public CustomersInfo getCustomersInfo() {
+	// return customersInfo;
+	// }
+	//
+	// public void setCustomersInfo(CustomersInfo customersInfo) {
+	// this.customersInfo = customersInfo;
+	// }
 
 	private int cust_id;
 	private String cust_name;
@@ -48,108 +61,205 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware{
 	private String business_manager;
 	private String business_assistant;
 	private String discount_id;
-	
+
 	private String mailFrom;
 	private String prePO_MailTo;
 	private String po_MailTo;
 	private String ocpi_MailTo;
 	private String inv_Pklist_mailto;
-	
-	
 
 	@Override
 	public String execute() throws Exception {
-		
+
 		return super.execute();
 	}
 
 	public String create() throws Exception {
-//		SessionFactory factory = null;
+		// SessionFactory factory = null;
 		boolean flag = false;
-		System.out.println("name:"+cust_name);
-		flag = (cust_name.length()>0);
-		System.out.println("flag:"+flag);
-		if(flag)
-//		type;
-//	 cust_code;
-// group_company;
-// corporation;
-//	 country;
-//		city;
-//		address1;
-//		address2;
-//		postcode;
-//		port_of_destination;
-//		shipping_mark;
-//		status;
-//		invoice_group;
-//		currency;
-//		payment_method;
-//		price_term1;
-//		price_term2;
-//		price_term3;
-//		markup_name;
-//		discount_name;
-//		market_area;
-//		business_manager;
-//		business_assistant;
-//		discount_id;)
+		System.out.println("name:" + cust_name);
+		flag = (cust_name.length() > 0);
+		System.out.println("flag:" + flag);
+		if (flag)
+			// type;
+			// cust_code;
+			// group_company;
+			// corporation;
+			// country;
+			// city;
+			// address1;
+			// address2;
+			// postcode;
+			// port_of_destination;
+			// shipping_mark;
+			// status;
+			// invoice_group;
+			// currency;
+			// payment_method;
+			// price_term1;
+			// price_term2;
+			// price_term3;
+			// markup_name;
+			// discount_name;
+			// market_area;
+			// business_manager;
+			// business_assistant;
+			// discount_id;)
 		{
-//			User user = new User();
-//			user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-//			user.setName("xdp孤傲苍狼");
-//			user.setPwd("123456");
-//			user.setCreatedatetime(new Date());
-//			userService.save(user);
-			
-			CustomersInfo customersInfo = new CustomersInfo(cust_name, type, cust_code, group_company, corporation, 
-					country, city, address1, address2, postcode, port_of_destination, shipping_mark, status, 
-					invoice_group, currency, payment_method, price_term1, price_term2, price_term3, markup_name, 
+			// User user = new User();
+			// user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+			// user.setName("xdp孤傲苍狼");
+			// user.setPwd("123456");
+			// user.setCreatedatetime(new Date());
+			// userService.save(user);
+
+			CustomersInfo customersInfo = new CustomersInfo(cust_name, type, cust_code, group_company, corporation,
+					country, city, address1, address2, postcode, port_of_destination, shipping_mark, status,
+					invoice_group, currency, payment_method, price_term1, price_term2, price_term3, markup_name,
 					discount_name, market_area, business_manager, business_assistant, discount_id);
 			customersInfoService.create(customersInfo);
-			
-			request.put("customersInfo", customersInfoService.read(cust_name));
-			
-//			System.out.println(customersInfo.toString());
-			
-//			Integer cust_id = customersInfo.getCust_id();
-			
-//			System.out.println(cust_id);
-			
-//			CustContactors custContactors = new CustContactors(cust_id, mailFrom, prePO_MailTo, po_MailTo, ocpi_MailTo, inv_Pklist_mailto);
-//			custContactors.setCust_id(cust_id);
-			
-//			custContactorsService.create(custContactors);
-//			System.out.println(custContactors.toString());
 
-			
+			request.put("customersInfo", customersInfoService.read(cust_name));
+
 			return "success";
-		}
-		else{
+		} else {
 			return "failure";
 		}
-//		return super.execute();
+		// return super.execute();
 	}
-	
-	
-	
+
 	public String read() throws Exception {
-		
-//		customersInfoService.read(cust_name);
+
+		// customersInfoService.read(cust_name);
 		request.put("customersInfo", customersInfoService.read(cust_name));
-		
-		return "list";
+
+		return "success";
 	}
-	
-	
+
+	public String confirm() throws Exception {
+
+		customersInfoService.confirm(cust_id, "有效");
+		request.put("customersInfo", customersInfoService.read4ID(cust_id));
+		// request.put("customersInfo", customersInfoService.read(cust_name));
+
+		return "success";
+
+	}
+
+	public String check() throws Exception {
+
+		// customersInfoService.check(cust_id, "有效");
+		request.put("customersInfo", customersInfoService.read4ID(cust_id));
+
+		return "check";
+
+	}
+
+	public String edit() throws Exception {
+
+		request.put("customersInfo", customersInfoService.read4ID(cust_id));
+
+		return "edit";
+	}
+
+	public String update() throws Exception {
+
+		CustomersInfo customersInfo = customersInfoService.get(cust_id);
+
+		System.out.println(customersInfo.toString());
+
+		if (cust_name != null) {
+			customersInfo.setCust_name(cust_name);
+		}
+		if (type != null ) {
+			customersInfo.setType(type);
+		}
+		if (cust_code != null) {
+			customersInfo.setCust_code(cust_code);
+		}
+		if (group_company != null) {
+			customersInfo.setGroup_company(group_company);
+		}
+		if (corporation != null) {
+			customersInfo.setCorporation(corporation);
+		}
+		if (country != null) {
+			customersInfo.setCountry(country);
+		}
+		if (city != null) {
+			customersInfo.setCity(city);
+		}
+		if (address1 != null) {
+			customersInfo.setAddress1(address1);
+		}
+		if (address2 != null) {
+			customersInfo.setAddress2(address2);
+		}
+		if (postcode != null) {
+			customersInfo.setPostcode(postcode);
+		}
+		if (port_of_destination != null) {
+			customersInfo.setPort_of_destination(port_of_destination);
+		}
+		if (shipping_mark != null) {
+			customersInfo.setShipping_mark(shipping_mark);
+		}
+		if (status != null) {
+			customersInfo.setStatus(status);
+		}
+		if (invoice_group != null) {
+			customersInfo.setInvoice_group(invoice_group);
+		}
+		if (currency != null) {
+			customersInfo.setCurrency(currency);
+		}
+		if (payment_method != null) {
+			customersInfo.setPayment_method(payment_method);
+		}
+		if (price_term1 != null) {
+			customersInfo.setPrice_term1(price_term1);
+		}
+		if (price_term2 != null) {
+			customersInfo.setPrice_term2(price_term2);
+		}
+		if (price_term3 != null) {
+			customersInfo.setPrice_term3(price_term3);
+		}
+		if (markup_name != null) {
+			customersInfo.setMarkup_name(markup_name);
+		}
+		if (discount_name != null) {
+			customersInfo.setDiscount_name(discount_name);
+		}
+		if (market_area != null) {
+			customersInfo.setMarket_area(market_area);
+		}
+		if (business_manager != null) {
+			customersInfo.setBusiness_manager(business_manager);
+		}
+		if (business_assistant != null) {
+			customersInfo.setBusiness_assistant(business_assistant);
+		}
+		if (discount_id != null) {
+			customersInfo.setDiscount_id(discount_id);
+		}
+
+		System.out.println(customersInfo.toString());
+		customersInfoService.update(customersInfo);
+
+//		HttpServletResponse response = ServletActionContext.getResponse();
+//		response.getWriter().write("success");
+		
+		return null;
+		// return SUCCESS;
+	}
+
 	private Map<String, Object> request;
-	
+
 	@Override
 	public void setRequest(Map<String, Object> arg0) {
 		this.request = arg0;
 	}
-	
-	
 
 	public int getCust_id() {
 		return cust_id;
@@ -158,8 +268,7 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware{
 	public void setCust_id(int cust_id) {
 		this.cust_id = cust_id;
 	}
-	
-	
+
 	public String getCust_name() {
 		return cust_name;
 	}
@@ -359,48 +468,47 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware{
 	public void setDiscount_id(String discount_id) {
 		this.discount_id = discount_id;
 	}
-		
-//**************************
-	
+
+	// **************************
+
 	public String getMailFrom() {
 		return mailFrom;
 	}
-	
+
 	public void setMailFrom(String mailFrom) {
 		this.mailFrom = mailFrom;
 	}
-	
+
 	public String getPrePO_MailTo() {
 		return prePO_MailTo;
 	}
-	
+
 	public void setPrePO_MailTo(String prePO_MailTo) {
 		this.prePO_MailTo = prePO_MailTo;
 	}
-	
+
 	public String getPo_MailTo() {
 		return po_MailTo;
 	}
-	
+
 	public void setPo_MailTo(String po_MailTo) {
 		this.po_MailTo = po_MailTo;
 	}
-	
+
 	public String getOcpi_MailTo() {
 		return ocpi_MailTo;
 	}
-	
+
 	public void setOcpi_MailTo(String ocpi_MailTo) {
 		this.ocpi_MailTo = ocpi_MailTo;
 	}
-	
+
 	public String getInv_Pklist_mailto() {
 		return inv_Pklist_mailto;
 	}
-	
+
 	public void setInv_Pklist_mailto(String inv_Pklist_mailto) {
 		this.inv_Pklist_mailto = inv_Pklist_mailto;
 	}
-
 
 }

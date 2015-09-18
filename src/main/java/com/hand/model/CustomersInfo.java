@@ -214,8 +214,8 @@ public class CustomersInfo {
 		return payment_method;
 	}
 
-	public void setPayment_method(String payment_methor) {
-		this.payment_method = payment_methor;
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
 	}
 
 	public String getPrice_term1() {

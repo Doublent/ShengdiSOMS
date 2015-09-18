@@ -10,4 +10,12 @@ public interface CustomersInfoService {
 	
 	List<CustomersInfo> read(String cust_name);
 	
+	List<CustomersInfo> read4ID(Integer cust_id);
+	
+	void confirm(Integer cust_id ,String status);
+	
+	void update(CustomersInfo customersInfo);
+	
+	CustomersInfo get(Integer cust_id);
+	
 }
