@@ -17,8 +17,8 @@
 <body>
 	<div class="container">
 		<div class="row">
-		<div id="add-find-form" class="col-md-12 col-md-pull-1 form-inline">
-			<form action="normalDiscountAction!findByCondition.action" method="get">
+		<div id="add-find-form" class="col-md-12 form-inline">
+			<form action="normalDiscountAction!findByCondition.action" method="post">
 				<div class="control-group">
 					<label class="col-md-1 col-md-offset-2 control-label">折扣名称</label>
 					<input class="col-md-3 form-control" type="text" name="normalDiscount.discount_name"/>
@@ -31,8 +31,8 @@
 				</div>
 			</form>
 		</div>
-		<div class="line col-md-12 col-md-pull-1"></div>
-		<div id="dixcount-message-table" class="col-md-10 col-md-pull-1"
+		<div class="line col-md-12"></div>
+		<div id="dixcount-message-table" class="col-md-10"
 				 style="overflow:scroll; height:500px; width: 100%">
 			<table
 				class="table table-striped table-bordered table-hover table-condensed">
@@ -58,7 +58,12 @@
 							<td><s:property value="#nd.discount_name" /></td>
 							<td><s:property value="#nd.type" /></td>
 							<td><s:property value="#nd.discount_base" /></td>
-							<td><s:property value="#nd.base_qty" /></td>
+							<s:if test="#nd.base_qty == 0||#nd.base_qty == null">
+								<td>-</td>
+							</s:if>
+							<s:else>
+								<td><s:property value="#nd.base_qty" /></td>
+							</s:else>
 							<td><s:property value="#nd.discount_rate" /></td>
 							<td><s:property value="#nd.activity" /></td>
 							<td><a class="btn btn-default"

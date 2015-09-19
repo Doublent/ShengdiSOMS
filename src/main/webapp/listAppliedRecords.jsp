@@ -17,7 +17,7 @@
 <body>
 	<div class="container">
 		
-		<div id="dixcount-message-table" class="col-md-10 col-md-pull-1"
+		<div id="dixcount-message-table" class="col-md-10 "
 			style="overflow: scroll; height: 500px; width: 100%">
 			<table border="0" cellspacing="0" cellpadding="0" 
 				class="table table-striped table-bordered table-hover table-condensed">

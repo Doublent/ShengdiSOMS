@@ -32,7 +32,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12 col-md-pull-1">
+		<div class="col-md-12 ">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
@@ -56,9 +56,10 @@
 							</tr>
 						</thead>
 						<tbody>
+						<%int id=0; %>
 							<tr>
 								<td><input type="text" class="form-control"
-									value="${normalDiscount.discount_id}" name="id" disabled /></td>
+									value="<%=++id %>" name="id" disabled /></td>
 								<td><input type="text" class="form-control"
 									value="${normalDiscount.discount_name}"
 									name="normalDiscount.discount_name" /></td>

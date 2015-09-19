@@ -53,7 +53,7 @@
 								<td><input type="text" class="form-control"
 									name="specialDiscount.amount" /></td>
 								<td><input type="text" class="form-control"
-									name="specialDiscount.applied_amount" disabled/></td>
+									name="specialDiscount.applied_amount" value="0" disabled/></td>
 								<td><input type="text" class="form-control"
 									name="specialDiscount.balance" disabled/></td>
 								<td><select class="form-control" name="specialDiscount.activity" style="width: 80px;">

@@ -1,7 +1,7 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : test
+Source Server         : localhost_3306
 Source Server Version : 50626
 Source Host           : localhost:3306
 Source Database       : shengdisoms
@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-09-16 11:21:14
+Date: 2015-09-19 22:39:13
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -34,3 +34,5 @@ CREATE TABLE `om_cust_contactors` (
 -- Records of om_cust_contactors
 -- ----------------------------
 INSERT INTO `om_cust_contactors` VALUES ('10001', 'michael@winhere.com.cn', 'michael@winhere.com.cn', 'michael@winhere.com.cn', 'michael@winhere.com.cn', 'michael@winhere.com.cn');
+INSERT INTO `om_cust_contactors` VALUES ('10004', 'a', 'a', 'a', 'a', 'a');
+INSERT INTO `om_cust_contactors` VALUES ('10044', 'z', 'z', 'z', 'z', 'z');

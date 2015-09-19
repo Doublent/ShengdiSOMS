@@ -14,7 +14,7 @@
 </head>
 <body>
 	<div class="container">
-		<div id="add-find-form" class="col-md-12 col-md-pull-1 form-inline">
+		<div id="add-find-form" class="col-md-12  form-inline">
 			<form action="specialDiscountAction!findByCondition.action"
 				method="post">
 				<div class="control-group">
@@ -33,8 +33,8 @@
 				</div>
 			</form>
 		</div>
-		<div class="line col-md-12 col-md-pull-1"></div>
-		<div id="dixcount-message-table" class="col-md-10 col-md-pull-1" style="overflow:scroll; height:500px; width: 100%">
+		<div class="line col-md-12 "></div>
+		<div id="dixcount-message-table" class="col-md-10 " style="overflow:scroll; height:500px; width: 100%">
 			<table border="0" cellspacing="0" cellpadding="0"
 				class="table table-striped table-bordered table-hover table-condensed">
 				<thead>

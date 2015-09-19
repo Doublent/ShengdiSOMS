@@ -31,16 +31,16 @@
 						<li><a href="default.jsp" data-toggle="tab"> <i
 								class="glyphicon glyphicon-th-large"></i> 首页
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 销售订单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 发货单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 制单界面
 						</a></li>
-						<li><a href=""> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> orderbase维护
 						</a></li>
 						<li><a href="#mainDataList"
@@ -74,17 +74,17 @@
 												class="glyphicon glyphicon-th-list"></i>一次性折扣</a></li>
 									</ul></li>
 							</ul></li>
-						<li><a href=""><i class="glyphicon glyphicon-credit-card"></i>
+						<li><a href="#"><i class="glyphicon glyphicon-credit-card"></i>
 								系统设置 </a></li>
 
-						<li><a href=""> <i class="glyphicon glyphicon-user"></i>
+						<li><a href="#"> <i class="glyphicon glyphicon-user"></i>
 								用户管理 <%--<span class="label label-warning pull-right">5</span>--%>
 						</a></li>
 
-						<li><a href=""> <i class="glyphicon glyphicon-calendar"></i>
+						<li><a href="#"> <i class="glyphicon glyphicon-calendar"></i>
 								权限管理
 						</a></li>
-						<li><a href=""> <i class="glyphicon glyphicon-fire"></i>
+						<li><a href="#"> <i class="glyphicon glyphicon-fire"></i>
 								报表管理
 						</a></li>
 					</ul>

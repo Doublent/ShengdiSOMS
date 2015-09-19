@@ -30,7 +30,7 @@
 </head>
 <body>
 	<div class="container">
-		<div class="col-md-12 col-md-pull-1">
+		<div class="col-md-12 ">
 			<div>
 				<label>新增 / 编辑折扣</label>
 			</div>
