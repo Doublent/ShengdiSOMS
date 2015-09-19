@@ -5,6 +5,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import com.hand.model.CustContactors;
+import com.hand.model.CustomersInfo;
 
 public interface CustContactorsDao {
 	
@@ -14,10 +15,14 @@ public interface CustContactorsDao {
 	   
 	   public CustContactors read(Integer id);
 	   
+	   public List<CustContactors> read4ID(Integer cust_id);
+	   
 	   public List<CustContactors> readAll();
 	   
 	   public void delete(Integer id);
 	   
-	   public void update(Integer id ,String str);
+	   public void update(CustContactors custContactors);
+	   
+	   public CustContactors get(Integer cust_id);
 	
 }

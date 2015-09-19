@@ -32,66 +32,41 @@ public class CustomersInfoDaoImpl implements CustomersInfoDao {
 	}
 
 	@Override
-	public void create(CustomersInfo customersInfo){
+	public Integer create(CustomersInfo customersInfo){
 
-		sessionFactory.getCurrentSession().save(customersInfo);
-
-		//	(String cust_name, String type, String cust_code, String group_company, String corporation,
-		//			String country, String city, String address1, String address2, String postcode, String port_of_destination,
-		//			String shipping_mark, String status, String invoice_group, String currency, String payment_method,
-		//			String price_term1, String price_term2, String price_term3, String markup_name, String discount_name,
-		//			String market_area, String business_manager, String business_assistant, String discount_id) {
-
-		//	      Transaction tx = null;
-		//	      try{
-		//	         tx = session.beginTransaction();
-		//	         CustomersInfo customersInfo = new CustomersInfo( cust_name,  type,  cust_code,  group_company,  corporation,
-		//	     			 country,  city,  address1,  address2,  postcode,  port_of_destination,
-		//	    			 shipping_mark,  status,  invoice_group,  currency,  payment_method,
-		//	    			 price_term1,  price_term2,  price_term3,  markup_name,  discount_name,
-		//	    			 market_area,  business_manager,  business_assistant,  discount_id);
-		//	         session.save(customersInfo);
-		//	         tx.commit();
-		//	      }catch (HibernateException e) {
-		//	         if (tx!=null) tx.rollback();
-		//	         e.printStackTrace(); 
-		//	      }finally {
-		//	         session.close(); 
-		//	      }
-
+		return (Integer) sessionFactory.getCurrentSession().save(customersInfo);
+		
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<CustomersInfo> read(String cust_name) {
+	public List<CustomersInfo> read(String cust_name,String type,String group_company,
+			String cust_code,String status,String corporation) {
 
-		String hql = "FROM CustomersInfo c WHERE c.cust_name = ?";
+		String hql = "FROM CustomersInfo WHERE 1=1";// c WHERE c.cust_name = ?";
 		//		Query query = sessionFactory.getCurrentSession().createQuery(hql).setString(0, cust_name);
 		//		CustomersInfo customersInfo = (CustomersInfo) query.uniqueResult();
+		if(cust_name.trim().length()!=0){
+			hql += " and cust_name like '%" + cust_name + "%'";
+		}
+		if(type.trim().length()!=0){
+			hql += " and type like '%" + type + "%'";
+		}
+		if(group_company.trim().length()!=0){
+			hql += " and group_company like '%" + group_company + "%'";
+		}
+		if(cust_code.trim().length()!=0){
+			hql += " and cust_code like '%" + cust_code + "%'";
+		}
+		if(status.trim().length()!=0){
+			hql += " and status like '%" + status + "%'";
+		}
+		if(corporation.trim().length()!=0){
+			hql += " and corporation like '%" + corporation + "%'";
+		}
+		
+		return sessionFactory.getCurrentSession().createQuery(hql).list();//setString(0, cust_name).list();
 
-		return sessionFactory.getCurrentSession().createQuery(hql).setString(0, cust_name).list();
-
-
-		//		Transaction tx = null;
-		//	      try{
-		//	    	  tx = session.beginTransaction();
-		//		         Customer customer = 
-		//		                   (Customer)session.get(Customer.class, ID); 
-		//		         
-		//		         System.out.println("已经保存的数据如下：");
-		//		     	System.out.println("ID:"+customer.getCustomer_id());
-		//		     	System.out.println("FirstName:"+customer.getFirst_name());
-		//		     	System.out.println("LastName:"+customer.getLast_name());
-		//		     	System.out.println("Email:"+customer.getEmail());
-		//		     	System.out.println("Address:"+((Address)session.get(Address.class,customer.getAddress_id())).getAddress());
-		//		         
-		//		         tx.commit();
-		//	      }catch (HibernateException e) {
-		//	         if (tx!=null) tx.rollback();
-		//	         e.printStackTrace(); 
-		//	      }finally {
-		//	         session.close(); 
-		//	      }
 
 	}
 	
@@ -105,47 +80,17 @@ public class CustomersInfoDaoImpl implements CustomersInfoDao {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<CustomersInfo> readAll() {
-
-		//		Transaction tx = null;
-		//	      try{
-		//	         tx = session.beginTransaction();
-		//	         List employees = session.createQuery("FROM Employee").list(); 
-		//	         for (Iterator iterator = 
-		//	                           employees.iterator(); iterator.hasNext();){
-		//	            Employee employee = (Employee) iterator.next(); 
-		//	            System.out.print("First Name: " + employee.getFirstName()); 
-		//	            System.out.print("  Last Name: " + employee.getLastName()); 
-		//	            System.out.println("  Salary: " + employee.getSalary()); 
-		//	         }
-		//	         tx.commit();
-		//	      }catch (HibernateException e) {
-		//	         if (tx!=null) tx.rollback();
-		//	         e.printStackTrace(); 
-		//	      }finally {
-		//	         session.close(); 
-		//	      }
-
-		return null;
+		
+		String hql = "FROM CustomersInfo WHERE 1=1";
+		return sessionFactory.getCurrentSession().createQuery(hql).list();
+		
 	}
 
 	@Override
 	public void delete(Integer id) {
-
-		Transaction tx = null;
-		//	      try{
-		//	         tx = session.beginTransaction();
-		//	         Employee employee = 
-		//	                   (Employee)session.get(Employee.class, EmployeeID); 
-		//	         session.delete(employee); 
-		//	         tx.commit();
-		//	      }catch (HibernateException e) {
-		//	         if (tx!=null) tx.rollback();
-		//	         e.printStackTrace(); 
-		//	      }finally {
-		//	         session.close(); 
-		//	      }
 
 
 	}
@@ -155,35 +100,10 @@ public class CustomersInfoDaoImpl implements CustomersInfoDao {
 		
 		sessionFactory.getCurrentSession().update(customersInfo);
 		
-		
-		//		Transaction tx = null;
-		//	      try{
-		//	         tx = session.beginTransaction();
-		//	         Employee employee = 
-		//	                    (Employee)session.get(Employee.class, EmployeeID); 
-		//	         employee.setSalary( salary );
-		//	         session.update(employee); 
-		//	         tx.commit();
-		//	      }catch (HibernateException e) {
-		//	         if (tx!=null) tx.rollback();
-		//	         e.printStackTrace(); 
-		//	      }finally {
-		//	         session.close(); 
-		//	      }
-
-
-
 	}
 
 	@Override
 	public void confirm(Integer cust_id, String status) {
-//		String hql = "update Web w set w.littlewarm=? w.noticepic=? w.help=? where w.id =?";
-//		Query q = session.createQuery(hql);
-//		q.setString(0,littlewarmValue);
-//		q.setByte(1,noticepicValue);
-//		q.setString(2,helpValue);
-//		q.setInteger(3,idValue);
-//		q.executeUpdate();
 		
 		String hql = "update CustomersInfo c set c.status=? where c.cust_id =?";
 		Query q = sessionFactory.getCurrentSession().createQuery(hql);
@@ -199,7 +119,5 @@ public class CustomersInfoDaoImpl implements CustomersInfoDao {
 		return (CustomersInfo) sessionFactory.getCurrentSession().get(CustomersInfo.class, cust_id);
 		
 	}
-
-	
 
 }

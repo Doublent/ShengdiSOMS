@@ -21,16 +21,17 @@ public class CustomersInfoServiceImpl implements CustomersInfoService {
     private CustomersInfoDao customersInfoDao;
 	
 	@Override
-	public void create(CustomersInfo customersInfo) {
+	public Integer create(CustomersInfo customersInfo) {
 		
-		customersInfoDao.create(customersInfo);
+		return customersInfoDao.create(customersInfo);
 		
 	}
 
 	@Override
-	public List<CustomersInfo> read(String cust_name) {
+	public List<CustomersInfo> read(String cust_name,String type,String group_company,
+			String cust_code,String status,String corporation) {
 		
-		return customersInfoDao.read(cust_name);
+		return customersInfoDao.read(cust_name, type, group_company, cust_code, status, corporation);
 		
 	}
 	
@@ -60,6 +61,12 @@ public class CustomersInfoServiceImpl implements CustomersInfoService {
 		
 		return customersInfoDao.get(cust_id);
 		
+	}
+
+	@Override
+	public List<CustomersInfo> readAll() {
+		
+		return customersInfoDao.readAll();
 	}
 
 	

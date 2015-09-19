@@ -10,15 +10,10 @@ public interface CustomersInfoDao {
 	
 	   public void setDataSource(DataSource dataSource);
 	   
-	   public void create(CustomersInfo customersInfo);
-//	   (String cust_name, String type, String cust_code, String group_company,
-//				String corporation, String country, String city, String address1, String address2, String postcode,
-//				String port_of_destination, String shipping_mark, String status, String invoice_group, String currency,
-//				String payment_method, String price_term1, String price_term2, String price_term3, String markup_name,
-//				String discount_name, String market_area, String business_manager, String business_assistant,
-//				String discount_id);
+	   public Integer create(CustomersInfo customersInfo);
 	   
-	   public List<CustomersInfo> read(String cust_name);
+	   public List<CustomersInfo> read(String cust_name,String type,String group_company,
+				String cust_code,String status,String corporation);
 	   
 	   public List<CustomersInfo> read4ID(Integer cust_id);
 	   
@@ -32,6 +27,5 @@ public interface CustomersInfoDao {
 	   
 	   public CustomersInfo get(Integer cust_id);
 	   
-//	   public void check(Integer cust_id);
 	   
 }

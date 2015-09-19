@@ -19,11 +19,16 @@ import com.opensymphony.xwork2.ActionSupport;
 @SuppressWarnings("serial")
 public class CustomerInfoAction extends ActionSupport implements RequestAware {
 
-	// 注入customersInfoService
+	/*
+	 * 注入customersInfoService
+	 */
 	@Autowired
 	private CustomersInfoService customersInfoService;
-	// @Autowired
-	// private CustContactorsService custContactorsService;
+	/**
+	 * 注入custContactorsService
+	 */
+	 @Autowired
+	 private CustContactorsService custContactorsService;
 
 	// private CustomersInfo customersInfo;
 	//
@@ -106,33 +111,37 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 			// business_assistant;
 			// discount_id;)
 		{
-			// User user = new User();
-			// user.setId(UUID.randomUUID().toString().replaceAll("-", ""));
-			// user.setName("xdp孤傲苍狼");
-			// user.setPwd("123456");
-			// user.setCreatedatetime(new Date());
-			// userService.save(user);
 
 			CustomersInfo customersInfo = new CustomersInfo(cust_name, type, cust_code, group_company, corporation,
 					country, city, address1, address2, postcode, port_of_destination, shipping_mark, status,
 					invoice_group, currency, payment_method, price_term1, price_term2, price_term3, markup_name,
 					discount_name, market_area, business_manager, business_assistant, discount_id);
-			customersInfoService.create(customersInfo);
-
-			request.put("customersInfo", customersInfoService.read(cust_name));
-
+			Integer id = customersInfoService.create(customersInfo);
+			
+			CustContactors custContactors = new CustContactors(id, mailFrom, prePO_MailTo, po_MailTo, ocpi_MailTo,
+					inv_Pklist_mailto);
+			custContactorsService.create(custContactors);
+			
+			request.put("customersInfo", customersInfoService.read4ID(id));
+			request.put("custContactors", custContactorsService.read4ID(id));
+			
 			return "success";
 		} else {
 			return "failure";
 		}
-		// return super.execute();
 	}
 
 	public String read() throws Exception {
 
 		// customersInfoService.read(cust_name);
-		request.put("customersInfo", customersInfoService.read(cust_name));
+		request.put("customersInfo", customersInfoService.read(cust_name,type,group_company,cust_code,status,corporation));
 
+		return "success";
+	}
+	
+	public String readAll() throws Exception {
+		
+		request.put("customersInfo", customersInfoService.readAll());
 		return "success";
 	}
 
@@ -150,7 +159,7 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 
 		// customersInfoService.check(cust_id, "有效");
 		request.put("customersInfo", customersInfoService.read4ID(cust_id));
-
+		request.put("custContactors", custContactorsService.read4ID(cust_id));
 		return "check";
 
 	}
@@ -158,6 +167,7 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 	public String edit() throws Exception {
 
 		request.put("customersInfo", customersInfoService.read4ID(cust_id));
+		request.put("custContactors", custContactorsService.read4ID(cust_id));
 
 		return "edit";
 	}
@@ -165,7 +175,8 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 	public String update() throws Exception {
 
 		CustomersInfo customersInfo = customersInfoService.get(cust_id);
-
+		CustContactors custContactors = custContactorsService.get(cust_id);
+		
 		System.out.println(customersInfo.toString());
 
 		if (cust_name != null) {
@@ -243,9 +254,26 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 		if (discount_id != null) {
 			customersInfo.setDiscount_id(discount_id);
 		}
+		
+//------	CustContactors	-------	
+		if(mailFrom!=null){
+			custContactors.setMailFrom(mailFrom);
+		}
+		if(prePO_MailTo!=null){
+			custContactors.setPrePO_MailTo(prePO_MailTo);
+		}
+		if(po_MailTo!=null){
+			custContactors.setPo_MailTo(po_MailTo);
+		}
+		if(ocpi_MailTo!=null){
+			custContactors.setOcpi_MailTo(ocpi_MailTo);
+		}
+		if(inv_Pklist_mailto!=null){
+			custContactors.setInv_Pklist_mailto(inv_Pklist_mailto);
+		}
 
-		System.out.println(customersInfo.toString());
 		customersInfoService.update(customersInfo);
+		custContactorsService.update(custContactors);
 
 //		HttpServletResponse response = ServletActionContext.getResponse();
 //		response.getWriter().write("success");

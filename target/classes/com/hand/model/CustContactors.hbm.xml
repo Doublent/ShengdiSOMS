@@ -6,7 +6,7 @@
     <class name="com.hand.model.CustContactors" table="om_cust_contactors">
         <id name="cust_id" type="int">
             <column name="CUST_ID" />
-            <generator class="native" />
+<!--             <generator class="" /> -->
         </id>
 <!--         <id name="cust_id" type="int"> -->
 <!--             <column name="CUST_ID"/> -->

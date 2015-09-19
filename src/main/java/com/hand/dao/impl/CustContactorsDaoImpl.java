@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.hand.dao.CustContactorsDao;
 import com.hand.model.CustContactors;
+import com.hand.model.CustomersInfo;
 
 @Repository("custContactorsDao")
 public class CustContactorsDaoImpl implements CustContactorsDao {
@@ -40,6 +41,16 @@ public class CustContactorsDaoImpl implements CustContactorsDao {
 		
 		return null;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<CustContactors> read4ID(Integer cust_id) {
+		
+		String hql = "FROM CustContactors c WHERE c.cust_id = ?";
+
+		return sessionFactory.getCurrentSession().createQuery(hql).setInteger(0, cust_id).list();
+		
+	}
 
 	@Override
 	public List<CustContactors> readAll() {
@@ -56,9 +67,16 @@ public class CustContactorsDaoImpl implements CustContactorsDao {
 	}
 
 	@Override
-	public void update(Integer id, String str) {
+	public CustContactors get(Integer cust_id) {
 		
+		return (CustContactors) sessionFactory.getCurrentSession().get(CustContactors.class, cust_id);
 		
+	}
+
+	@Override
+	public void update(CustContactors custContactors) {
+		
+		sessionFactory.getCurrentSession().update(custContactors);
 		
 	}
 

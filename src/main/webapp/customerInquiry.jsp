@@ -13,7 +13,7 @@
 
 </head>
 <body>
-	<div class="container-fruid">
+	<div class="container">
 		<div class="row col-md-12">
 			<div class="divI">
 				<form action="customerread.action" method="post">
@@ -67,71 +67,67 @@
 							<input class="longButton" type="submit" value="查询" />
 							<button class="longButton" type="button"
 								onclick="location.href='addCustomer.jsp'">新建</button>
-							<!-- 						<input class="longButton" type="submit" value="新建" /> -->
-							<!-- 						<button class="longButton"><a href="addCustomer.jsp"></a>新建</button> -->
 						</div>
 					</div>
-
-
 				</form>
 
-
 				<!-- 	----------------	红线划分	----------------	-->
-
 
 				<div class="row div1">
 					<img class="img redline" src="images/redline.png" />
 				</div>
 				<div class="div1">
-					<table class="table table-bordered table-hover" id="tablesize">
-						<tr>
-							<td class="info">序号</td>
-							<td class="info">客户名称</td>
-							<td class="info">客户代码</td>
-							<td class="info">所属TEAM</td>
-							<td class="info">业务经理</td>
-							<td class="info">业务助理</td>
-							<td class="info">状态</td>
-							<td class="info" colspan="2">详细信息</td>
-							<td class="info">客户确认</td>
-						</tr>
-						<s:if
-							test="#request.customersInfo == null || #request.customersInfo.size() == 0">
+					<div class="tablesize"
+						style="overflow: scroll; height: 300px; width: 100%">
+						<table class="table table-bordered table-hover">
 							<tr>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
-								<td><font style="color: gray;">无</font></td>
+								<td class="info">序号</td>
+								<td class="info">客户名称</td>
+								<td class="info">客户代码</td>
+								<td class="info">所属TEAM</td>
+								<td class="info">业务经理</td>
+								<td class="info">业务助理</td>
+								<td class="info">状态</td>
+								<td class="info" colspan="2">详细信息</td>
+								<td class="info">客户确认</td>
 							</tr>
-						</s:if>
-						<s:else>
-							<s:iterator value="#request.customersInfo" status="st">
+							<s:if
+								test="#request.customersInfo == null || #request.customersInfo.size() == 0">
 								<tr>
-									<td><s:property value="#st.getIndex()+1" /></td>
-									<td>${cust_name }</td>
-									<td>${cust_code }</td>
-									<td>${market_area }</td>
-									<td>${business_manager }</td>
-									<td>${business_assistant }</td>
-									<td>${status }</td>
-
-									<td><button class="shortButton"
-											onclick="location.href='customercheck.action?cust_id=${cust_id}'">查看</button></td>
-									<td><button class="shortButton"
-											onclick="location.href='customeredit.action?cust_id=${cust_id}'">编辑</button></td>
-									<td><button class="shortButton"
-											onclick="location.href='customerconfirm.action?cust_id=${cust_id}'">确认</button></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
+									<td><font style="color: gray;">无</font></td>
 								</tr>
-							</s:iterator>
-						</s:else>
+							</s:if>
+							<s:else>
+								<s:iterator value="#request.customersInfo" status="st">
+									<tr>
+										<td><s:property value="#st.getIndex()+1" /></td>
+										<td>${cust_name }</td>
+										<td>${cust_code }</td>
+										<td>${market_area }</td>
+										<td>${business_manager }</td>
+										<td>${business_assistant }</td>
+										<td>${status }</td>
 
-					</table>
+										<td><button class="shortButton"
+												onclick="location.href='customercheck.action?cust_id=${cust_id}'">查看</button></td>
+										<td><button class="shortButton"
+												onclick="location.href='customeredit.action?cust_id=${cust_id}'">编辑</button></td>
+										<td><button class="shortButton"
+												onclick="location.href='customerconfirm.action?cust_id=${cust_id}'">确认</button></td>
+									</tr>
+								</s:iterator>
+							</s:else>
+						</table>
+					</div>
 				</div>
 			</div>
 		</div>
