@@ -9,13 +9,13 @@
             <generator class="native" />
         </id>
         <property name="cust_name" type="java.lang.String">
-            <column name="CUST_NAME" />
+            <column name="CUST_NAME" not-null="true"/>
         </property>
         <property name="type" type="java.lang.String">
-            <column name="TYPE" />
+            <column name="TYPE" not-null="true"/>
         </property>
         <property name="cust_code" type="java.lang.String">
-            <column name="CUST_CODE" />
+            <column name="CUST_CODE" not-null="true"/>
         </property>
         <property name="group_company" type="java.lang.String">
             <column name="GROUP_COMPANY" />
@@ -24,7 +24,7 @@
             <column name="CORPORATION" />
         </property>
         <property name="country" type="java.lang.String">
-            <column name="COUNTRY" />
+            <column name="COUNTRY" not-null="true"/>
         </property>
         <property name="city" type="java.lang.String">
             <column name="CITY" />
@@ -39,22 +39,22 @@
             <column name="POSTCODE" />
         </property>
         <property name="port_of_destination" type="java.lang.String">
-            <column name="PORT_OF_DESTINATION" />
+            <column name="PORT_OF_DESTINATION" not-null="true"/>
         </property>
         <property name="shipping_mark" type="java.lang.String">
-            <column name="SHIPPING_MARK" />
+            <column name="SHIPPING_MARK" not-null="true"/>
         </property>
         <property name="status" type="java.lang.String">
-            <column name="STATUS" />
+            <column name="STATUS" not-null="true"/>
         </property>
         <property name="invoice_group" type="java.lang.String">
             <column name="INVOICE_GROUP" />
         </property>
         <property name="currency" type="java.lang.String">
-            <column name="CURRENCY" />
+            <column name="CURRENCY" not-null="true"/>
         </property>
         <property name="payment_method" type="java.lang.String">
-            <column name="PAYMENT_METHOD" />
+            <column name="PAYMENT_METHOD" not-null="true"/>
         </property>
         <property name="price_term1" type="java.lang.String">
             <column name="PRICE_TERM1" />
@@ -66,22 +66,25 @@
             <column name="PRICE_TERM3" />
         </property>
         <property name="markup_name" type="java.lang.String">
-            <column name="MARKUP_NAME" />
+            <column name="MARKUP_NAME" not-null="true"/>
         </property>
         <property name="discount_name" type="java.lang.String">
-            <column name="DISCOUNT_NAME" />
+            <column name="DISCOUNT_NAME" not-null="true"/>
         </property>
         <property name="market_area" type="java.lang.String">
-            <column name="MARKET_AREA" />
+            <column name="MARKET_AREA" not-null="true"/>
         </property>
         <property name="business_manager" type="java.lang.String">
-            <column name="BUSINESS_MANAGER" />
+            <column name="BUSINESS_MANAGER" not-null="true"/>
         </property>
         <property name="business_assistant" type="java.lang.String">
-            <column name="BUSINESS_ASSISTANT" />
+            <column name="BUSINESS_ASSISTANT" not-null="true"/>
         </property>
-        <property name="discount_id" type="java.lang.String">
+        <property name="discount_id" type="int">
             <column name="DISCOUNT_ID" />
+        </property>
+        <property name="markup_id" type="int">
+        	<column name="MARKUP_ID" />
         </property>
         
         

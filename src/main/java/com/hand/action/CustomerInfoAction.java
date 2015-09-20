@@ -10,9 +10,13 @@ import org.apache.struts2.interceptor.RequestAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hand.model.CustContactors;
+import com.hand.model.CustDiscount;
 import com.hand.model.CustomersInfo;
+import com.hand.model.NormalDiscount;
 import com.hand.service.CustContactorsService;
+import com.hand.service.CustDiscountService;
 import com.hand.service.CustomersInfoService;
+import com.hand.service.NormalDiscountService;
 import com.mysql.fabric.Response;
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -27,8 +31,18 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 	/**
 	 * 注入custContactorsService
 	 */
-	 @Autowired
-	 private CustContactorsService custContactorsService;
+	@Autowired
+	private CustContactorsService custContactorsService;
+	/**
+	 * 注入custContactorsService
+	 */
+	@Autowired
+	private CustDiscountService custDiscountService;
+	/*
+	 * 注入normalDiscountService
+	 */
+	@Autowired
+	private NormalDiscountService normalDiscountService;
 
 	// private CustomersInfo customersInfo;
 	//
@@ -65,7 +79,8 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 	private String market_area;
 	private String business_manager;
 	private String business_assistant;
-	private String discount_id;
+	private int discount_id;
+	private int markup_id;
 
 	private String mailFrom;
 	private String prePO_MailTo;
@@ -73,77 +88,172 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 	private String ocpi_MailTo;
 	private String inv_Pklist_mailto;
 
+	private String default_;
+	private String criterion;
+	private int base_qty;
+	private double discount_rate;
+	private String active;
+
+	public String getDefault_() {
+		return default_;
+	}
+
+	public void setDefault_(String default_) {
+		this.default_ = default_;
+	}
+
+	public String getCriterion() {
+		return criterion;
+	}
+
+	public void setCriterion(String criterion) {
+		this.criterion = criterion;
+	}
+
+	public int getBase_qty() {
+		return base_qty;
+	}
+
+	public void setBase_qty(int base_qty) {
+		this.base_qty = base_qty;
+	}
+
+	public double getDiscount_rate() {
+		return discount_rate;
+	}
+
+	public void setDiscount_rate(double discount_rate) {
+		this.discount_rate = discount_rate;
+	}
+
+	public String getActive() {
+		return active;
+	}
+
+	public void setActive(String active) {
+		this.active = active;
+	}
+
 	@Override
 	public String execute() throws Exception {
 
 		return super.execute();
 	}
 
-	public String create() throws Exception {
-		// SessionFactory factory = null;
-		boolean flag = false;
-		System.out.println("name:" + cust_name);
-		flag = (cust_name.length() > 0);
-		System.out.println("flag:" + flag);
-		if (flag)
-			// type;
-			// cust_code;
-			// group_company;
-			// corporation;
-			// country;
-			// city;
-			// address1;
-			// address2;
-			// postcode;
-			// port_of_destination;
-			// shipping_mark;
-			// status;
-			// invoice_group;
-			// currency;
-			// payment_method;
-			// price_term1;
-			// price_term2;
-			// price_term3;
-			// markup_name;
-			// discount_name;
-			// market_area;
-			// business_manager;
-			// business_assistant;
-			// discount_id;)
-		{
+	public String addCustomer() throws Exception {
 
+		request.put("normalDiscount", normalDiscountService.findAll());
+		return "addCustomer";
+
+	}
+
+	public String create() throws Exception {
+		
+		boolean flag = false;
+//		flag = (cust_name.length() > 0);
+		flag = (cust_name.length()>0 && type.length()>0 && cust_code.length()>0 && 
+				country.length()>0 && port_of_destination.length()>0 &&
+				shipping_mark.length()>0 && status.length()>0 && currency.length()>0 &&
+				payment_method.length()>0 && 
+//				markup_name.length()>0 &&
+//				discount_name.length()>0 && 
+				market_area.length()>0 &&
+				business_manager.length()>0 && business_assistant.length()>0);
+		 
+		System.out.println("flag:" + flag);
+		if (flag) {
 			CustomersInfo customersInfo = new CustomersInfo(cust_name, type, cust_code, group_company, corporation,
 					country, city, address1, address2, postcode, port_of_destination, shipping_mark, status,
 					invoice_group, currency, payment_method, price_term1, price_term2, price_term3, markup_name,
-					discount_name, market_area, business_manager, business_assistant, discount_id);
+					discount_name, market_area, business_manager, business_assistant, discount_id, markup_id);
+
+			NormalDiscount normalDiscount1 = normalDiscountService.findSingleById(discount_id);
+			String dname1 = normalDiscount1.getDiscount_name();
+			customersInfo.setDiscount_name(dname1);
+			NormalDiscount normalDiscount2 = normalDiscountService.findSingleById(markup_id);
+			String dname2 = normalDiscount2.getDiscount_name();
+			customersInfo.setMarkup_name(dname2);
 			Integer id = customersInfoService.create(customersInfo);
-			
 			CustContactors custContactors = new CustContactors(id, mailFrom, prePO_MailTo, po_MailTo, ocpi_MailTo,
 					inv_Pklist_mailto);
 			custContactorsService.create(custContactors);
 			
+			CustDiscount custDiscount1 = new CustDiscount();
+			CustDiscount custDiscount2 = new CustDiscount();
+			// ----------对应discount_id
+			if (custDiscountService.idIsValid(discount_id)) {
+				custDiscount1.setDiscount_id(discount_id);
+				custDiscount1.setDiscount_name(dname1);
+				custDiscount1.setType(normalDiscount1.getType());
+				if (custDiscount1.getDiscount_name().equals("无折扣")) {
+					custDiscount1.setDefault_("Y");
+				} else {
+					custDiscount1.setDefault_("N");
+				}
+				custDiscount1.setCriterion(normalDiscount1.getDiscount_base());
+				custDiscount1.setBase_qty(normalDiscount1.getBase_qty());
+				custDiscount1.setDiscount_rate(normalDiscount1.getDiscount_rate());
+				custDiscount1.setActive(normalDiscount1.getActivity());
+				custDiscountService.create(custDiscount1);
+			}
+
+			// ----------对应markup_id
+			if (custDiscountService.idIsValid(markup_id)) {
+				custDiscount2.setDiscount_id(markup_id);
+				custDiscount2.setDiscount_name(dname2);
+				custDiscount2.setType(normalDiscount2.getType());
+				if (custDiscount2.getDiscount_name().equals("低于50片加价5%")) {
+					custDiscount2.setDefault_("Y");
+				} else {
+					custDiscount2.setDefault_("N");
+				}
+				custDiscount2.setCriterion(normalDiscount2.getDiscount_base());
+				custDiscount2.setBase_qty(normalDiscount2.getBase_qty());
+				custDiscount2.setDiscount_rate(normalDiscount2.getDiscount_rate());
+				custDiscount2.setActive(normalDiscount2.getActivity());
+				custDiscountService.create(custDiscount2);
+			}
+			
+			
+
 			request.put("customersInfo", customersInfoService.read4ID(id));
 			request.put("custContactors", custContactorsService.read4ID(id));
-			
+
 			return "success";
 		} else {
-			return "failure";
+
+			return "addfailure";
 		}
 	}
 
 	public String read() throws Exception {
 
 		// customersInfoService.read(cust_name);
-		request.put("customersInfo", customersInfoService.read(cust_name,type,group_company,cust_code,status,corporation));
+		request.put("customersInfo",
+				customersInfoService.read(cust_name, type, group_company, cust_code, status, corporation));
 
 		return "success";
 	}
-	
+
 	public String readAll() throws Exception {
-		
+
 		request.put("customersInfo", customersInfoService.readAll());
 		return "success";
 	}
+
+	public String readCodeToAddNormalJsp() throws Exception {
+
+		request.put("cust_code", customersInfoService.readCode());
+
+		return "readCodeToAddNormalJsp";
+	}
+
+	// public String readCodeToUpdateNormalJsp() throws Exception {
+	//
+	// request.put("cust_code", customersInfoService.readCode());
+	//
+	// return "readCodeToUpdateNormalJsp";
+	// }
 
 	public String confirm() throws Exception {
 
@@ -157,9 +267,9 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 
 	public String check() throws Exception {
 
-		// customersInfoService.check(cust_id, "有效");
 		request.put("customersInfo", customersInfoService.read4ID(cust_id));
 		request.put("custContactors", custContactorsService.read4ID(cust_id));
+		request.put("normalDiscount", normalDiscountService.findAll());
 		return "check";
 
 	}
@@ -168,6 +278,7 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 
 		request.put("customersInfo", customersInfoService.read4ID(cust_id));
 		request.put("custContactors", custContactorsService.read4ID(cust_id));
+		request.put("normalDiscount", normalDiscountService.findAll());
 
 		return "edit";
 	}
@@ -176,13 +287,11 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 
 		CustomersInfo customersInfo = customersInfoService.get(cust_id);
 		CustContactors custContactors = custContactorsService.get(cust_id);
-		
-		System.out.println(customersInfo.toString());
 
 		if (cust_name != null) {
 			customersInfo.setCust_name(cust_name);
 		}
-		if (type != null ) {
+		if (type != null) {
 			customersInfo.setType(type);
 		}
 		if (cust_code != null) {
@@ -236,11 +345,58 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 		if (price_term3 != null) {
 			customersInfo.setPrice_term3(price_term3);
 		}
-		if (markup_name != null) {
+		
+//***************************************************************************************************
+		if (markup_id != 0) {
 			customersInfo.setMarkup_name(markup_name);
+			
+			NormalDiscount normalDiscount2 = normalDiscountService.findSingleById(markup_id);
+			String dname2 = normalDiscount2.getDiscount_name();
+			customersInfo.setMarkup_name(dname2);
+			CustDiscount custDiscount2 = new CustDiscount();
+
+			// ----------对应markup_id
+			if (custDiscountService.idIsValid(markup_id)) {
+				custDiscount2.setDiscount_id(markup_id);
+				custDiscount2.setDiscount_name(dname2);
+				custDiscount2.setType(normalDiscount2.getType());
+				if (custDiscount2.getDiscount_name().equals("低于50片加价5%")) {
+					custDiscount2.setDefault_("Y");
+				} else {
+					custDiscount2.setDefault_("N");
+				}
+				custDiscount2.setCriterion(normalDiscount2.getDiscount_base());
+				custDiscount2.setBase_qty(normalDiscount2.getBase_qty());
+				custDiscount2.setDiscount_rate(normalDiscount2.getDiscount_rate());
+				custDiscount2.setActive(normalDiscount2.getActivity());
+				custDiscountService.create(custDiscount2);
+			}
+			
+			
 		}
-		if (discount_name != null) {
-			customersInfo.setDiscount_name(discount_name);
+		if (discount_id != 0) {
+			
+			NormalDiscount normalDiscount1 = normalDiscountService.findSingleById(discount_id);
+			String dname1 = normalDiscount1.getDiscount_name();
+			customersInfo.setDiscount_name(dname1);
+			CustDiscount custDiscount1 = new CustDiscount();
+			// ----------对应discount_id
+			if (custDiscountService.idIsValid(discount_id)) {
+				custDiscount1.setDiscount_id(discount_id);
+				custDiscount1.setDiscount_name(dname1);
+				custDiscount1.setType(normalDiscount1.getType());
+				if (custDiscount1.getDiscount_name().equals("无折扣")) {
+					custDiscount1.setDefault_("Y");
+				} else {
+					custDiscount1.setDefault_("N");
+				}
+				custDiscount1.setCriterion(normalDiscount1.getDiscount_base());
+				custDiscount1.setBase_qty(normalDiscount1.getBase_qty());
+				custDiscount1.setDiscount_rate(normalDiscount1.getDiscount_rate());
+				custDiscount1.setActive(normalDiscount1.getActivity());
+				custDiscountService.create(custDiscount1);
+			}
+			
 		}
 		if (market_area != null) {
 			customersInfo.setMarket_area(market_area);
@@ -251,33 +407,33 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 		if (business_assistant != null) {
 			customersInfo.setBusiness_assistant(business_assistant);
 		}
-		if (discount_id != null) {
-			customersInfo.setDiscount_id(discount_id);
-		}
-		
-//------	CustContactors	-------	
-		if(mailFrom!=null){
+		// if (discount_id != null) {
+		// customersInfo.setDiscount_id(discount_id);
+		// }
+		// if(markup_id){
+		// customersInfo.setMarkup_id(markup_id);
+		// }
+
+		// ------ CustContactors -------
+		if (mailFrom != null) {
 			custContactors.setMailFrom(mailFrom);
 		}
-		if(prePO_MailTo!=null){
+		if (prePO_MailTo != null) {
 			custContactors.setPrePO_MailTo(prePO_MailTo);
 		}
-		if(po_MailTo!=null){
+		if (po_MailTo != null) {
 			custContactors.setPo_MailTo(po_MailTo);
 		}
-		if(ocpi_MailTo!=null){
+		if (ocpi_MailTo != null) {
 			custContactors.setOcpi_MailTo(ocpi_MailTo);
 		}
-		if(inv_Pklist_mailto!=null){
+		if (inv_Pklist_mailto != null) {
 			custContactors.setInv_Pklist_mailto(inv_Pklist_mailto);
 		}
 
 		customersInfoService.update(customersInfo);
 		custContactorsService.update(custContactors);
 
-//		HttpServletResponse response = ServletActionContext.getResponse();
-//		response.getWriter().write("success");
-		
 		return null;
 		// return SUCCESS;
 	}
@@ -489,15 +645,23 @@ public class CustomerInfoAction extends ActionSupport implements RequestAware {
 		this.business_assistant = business_assistant;
 	}
 
-	public String getDiscount_id() {
+	public int getDiscount_id() {
 		return discount_id;
 	}
 
-	public void setDiscount_id(String discount_id) {
+	public void setDiscount_id(int discount_id) {
 		this.discount_id = discount_id;
 	}
 
-	// **************************
+	public int getMarkup_id() {
+		return markup_id;
+	}
+
+	public void setMarkup_id(int markup_id) {
+		this.markup_id = markup_id;
+	}
+
+	// -------- CustContactors --------------
 
 	public String getMailFrom() {
 		return mailFrom;

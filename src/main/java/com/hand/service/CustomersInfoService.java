@@ -15,6 +15,8 @@ public interface CustomersInfoService {
 	
 	List<CustomersInfo> readAll();
 	
+	List<String> readCode();
+	
 	void confirm(Integer cust_id ,String status);
 	
 	void update(CustomersInfo customersInfo);

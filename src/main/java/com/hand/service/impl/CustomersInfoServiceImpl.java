@@ -68,8 +68,11 @@ public class CustomersInfoServiceImpl implements CustomersInfoService {
 		
 		return customersInfoDao.readAll();
 	}
-
 	
-	
+	@Override
+	public List<String> readCode() {
+		
+		return customersInfoDao.readCode();
+	}
 
 }

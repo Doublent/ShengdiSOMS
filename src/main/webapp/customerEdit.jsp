@@ -73,7 +73,7 @@
 							<div id="div2" class="ax_html_button">
 								<input class="longButton" type="submit" value="查询" />
 								<button class="longButton" type="button"
-									onclick="location.href='addCustomer.jsp'">新建</button>
+									onclick="location.href='customeraddCustomer.action'">新建</button>
 							</div>
 						</div>
 						<div class="divright">
@@ -99,14 +99,78 @@
 						<div class="divheight">
 							<div class="col-md-2 col-md-offset-1 text">*国家</div>
 							<div class="col-md-9 inputtext">
-								<select style="width: auto;" name="country">
-									<option selected="selected">${country }</option>
-									<option style="width: 200px" value="2">12311</option>
-									<option style="width: 200px" value="3">123</option>
-									<option style="width: 200px" value="4">123</option>
-									<option style="width: 200px" value="5">123</option>
-									<option style="width: 200px" value="6">12311111111111111</option>
-									<option style="width: 200px" value="7">123</option>
+								<select style="width: 200px;" name="country">
+									
+									<option value="Afghanistan">Afghanistan</option>
+								<option value="Albania">Albania</option>
+								<option value="Argentina">Argentina</option>
+								<option value="Australia">Australia</option>
+								<option value="Austria">Austria</option>
+								<option value="Bahrain">Bahrain</option>
+								<option value="Belgium">Belgium</option>
+								<option value="Brazil">Brazil</option>
+								<option value="Bulgaria">Bulgaria</option>
+								<option value="Chile">Chile</option>
+								<option value="China">China</option>
+								<option value="Colombia">Colombia</option>
+								<option value="Croatia">Croatia</option>
+								<option value="Cyprus">Cyprus</option>
+								<option value="Czech Republic">Czech Republic</option>
+								<option value="Denmark">Denmark</option>
+								<option value="Ecuador">Ecuador</option>
+								<option value="Egypt">Egypt</option>
+								<option value="El Salvador">El Salvador</option>
+								<option value="Estonia">Estonia</option>
+								<option value="Faroe Islands">Faroe Islands</option>
+								<option value="Fiji">Fiji</option>
+								<option value="Finland">Finland</option>
+								<option value="FYROM">FYROM</option>
+								<option value="Germany">Germany</option>
+								<option value="Ghana">Ghana</option>
+								<option value="Greece">Greece</option>
+								<option value="Guatemala">Guatemala</option>
+								<option value="Guernsey">Guernsey</option>
+								<option value="Honduras">Honduras</option>
+								<option value="Hong Kong">Hong Kong</option>
+								<option value="Hungary">Hungary</option>
+								<option value="Iceland">Iceland</option>
+								<option value="India">India</option>
+								<option value="Indonesia">Indonesia</option>
+								<option value="Ireland">Ireland</option>
+								<option value="Italy">Italy</option>
+								<option value="Jamaica">Jamaica</option>
+								<option value="Jersey">Jersey</option>
+								<option value="Kenya">Kenya</option>
+								<option value="Kuwait">Kuwait</option>
+								<option value="Latvia">Latvia</option>
+								<option value="Lithuania">Lithuania</option>
+								<option value="France">France</option>
+								<option value="Luxembourg">Luxembourg</option>
+								<option value="Malaysia">Malaysia</option>
+								<option value="Malta">Malta</option>
+								<option value="Mexico">Mexico</option>
+								<option value="Netherlands">Netherlands</option>
+								<option value="New Zealand">New Zealand</option>
+								<option value="Nicaragua">Nicaragua</option>
+								<option value="Norway">Norway</option>
+								<option value="Paraguay">Paraguay</option>
+								<option value="Peru">Peru</option>
+								<option value="Poland">Poland</option>
+								<option value="Portugal">Portugal</option>
+								<option value="Romania">Romania</option>
+								<option value="Serbia">Serbia</option>
+								<option value="Singapore">Singapore</option>
+								<option value="Slovenia">Slovenia</option>
+								<option value="South Africa">South Africa</option>
+								<option value="Spain">Spain</option>
+								<option value="Sri Lanka">Sri Lanka</option>
+								<option value="Sweden">Sweden</option>
+								<option value="Switzerland">Switzerland</option>
+								<option value="Turkey">Turkey</option>
+								<option value="United Kingdom">United Kingdom</option>
+								<option value="Uruguay">Uruguay</option>
+								<option selected value="USA">USA</option>
+								<option selected="selected">${country }</option>
 								</select>
 							</div>
 						</div>
@@ -169,28 +233,39 @@
 						action="customerupdate.action?cust_id=${cust_id}" method="post">
 						<div class="divheight">
 							<div class="col-md-2 col-md-offset-1 text">所属发票组</div>
-							<div class="col-md-9 inputtext">
+							<div class="col-md-2 inputtext">
 								<input type="text" name="invoice_group"
 									value="${invoice_group }" />
 							</div>
-						</div>
-						<div class="divheight">
+<!-- 						</div> -->
+<!-- 						<div class="divheight"> -->
 							<div class="col-md-2 col-md-offset-1 text">*通用加价条款</div>
-							<div class="col-md-9 inputtext">
-								<input type="text" name="markup_name" value="${markup_name }" />
+							<div class="col-md-4 inputtext">
+<%-- 								<input type="text" name="markup_name" value="${markup_name }" /> --%>
+								<select name="markup_id" >
+									<option value="${markup_id }">${markup_name }</option>
+									<s:iterator value="#request.normalDiscount">
+										<option value="${discount_id }">${discount_name }</option>
+									</s:iterator>
+								</select>
 							</div>
 						</div>
 						<div class="divheight">
 							<div class="col-md-2 col-md-offset-1 text">*结算货币</div>
-							<div class="col-md-9 inputtext">
+							<div class="col-md-2 inputtext">
 								<input type="text" name="currency" value="${currency }" />
 							</div>
-						</div>
-						<div class="divheight">
+<!-- 						</div> -->
+<!-- 						<div class="divheight"> -->
 							<div class="col-md-2 col-md-offset-1 text">*一般折扣</div>
-							<div class="col-md-9 inputtext">
-								<input type="text" name="discount_name"
-									value="${discount_name }" />
+							<div class="col-md-4 inputtext">
+<%-- 								<input type="text" name="discount_name" value="${discount_name }" /> --%>
+								<select name="discount_id">
+									<option value="${discount_id }">${discount_name }</option>
+									<s:iterator value="#request.normalDiscount">
+										<option value="${discount_id }">${discount_name }</option>
+									</s:iterator>
+							</select>
 							</div>
 						</div>
 						<div class="divheight">

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.hand.dao.CustContactorsDao;
 import com.hand.model.CustContactors;
-import com.hand.model.CustomersInfo;
 
 @Repository("custContactorsDao")
 public class CustContactorsDaoImpl implements CustContactorsDao {

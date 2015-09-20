@@ -49,11 +49,13 @@
 		<!-- 新建客户 -->
 		<action name="customer*" class="com.hand.action.CustomerInfoAction" method="{1}">
 <!-- 			<interceptor-ref name="defaultStack"></interceptor-ref> -->
+			<result name="addCustomer">/addCustomer.jsp</result>
 			<result name="success">/customerInquiry.jsp</result>
-			<result name="failure">/failure.jsp</result>
-			<result name="list">/customerInquiry.jsp</result>
+			<result name="addfailure" type="redirect">/customeraddCustomer.action</result>
+			<result name="list">/list.jsp</result>
 			<result name="check">/checkCustomer.jsp</result>
 			<result name="edit">/customerEdit.jsp</result>
+			<result name="readCodeToAddNormalJsp">/addSpecialDiscount.jsp</result>
 		</action>
 		
 	</package>

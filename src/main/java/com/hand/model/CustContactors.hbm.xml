@@ -8,15 +8,6 @@
             <column name="CUST_ID" />
 <!--             <generator class="" /> -->
         </id>
-<!--         <id name="cust_id" type="int"> -->
-<!--             <column name="CUST_ID"/> -->
-<!--         </id> -->
-<!--         <many-to-one name="cust_id" class="com.hand.model.CustomersInfo" insert="false" update="false" fetch="select"> -->
-<!--             <column name="cust_id" precision="15" scale="0"></column> -->
-<!--         </many-to-one> -->
-
-
-
         <property name="mailFrom" type="java.lang.String">
             <column name="MAILFROM" />
         </property>

@@ -88,7 +88,16 @@ public class CustomersInfoDaoImpl implements CustomersInfoDao {
 		return sessionFactory.getCurrentSession().createQuery(hql).list();
 		
 	}
-
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> readCode() {
+		
+		String hql = "SELECT cust_code from om_customers_info";
+			
+		return sessionFactory.getCurrentSession().createSQLQuery(hql).list();
+	}
+	
 	@Override
 	public void delete(Integer id) {
 

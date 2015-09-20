@@ -8,7 +8,7 @@
 <title>客户查询</title>
 <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
 <link href="css/customer.css" type="text/css" rel="stylesheet">
-
+<script src="js/jquery-2.1.1.min.js"></script>
 
 
 </head>
@@ -66,7 +66,7 @@
 
 							<input class="longButton" type="submit" value="查询" />
 							<button class="longButton" type="button"
-								onclick="location.href='addCustomer.jsp'">新建</button>
+								onclick="location.href='customeraddCustomer.action'">新建</button>
 						</div>
 					</div>
 				</form>

@@ -19,6 +19,8 @@ public interface CustomersInfoDao {
 	   
 	   public List<CustomersInfo> readAll();
 	   
+	   public List<String> readCode();
+	   
 	   public void delete(Integer id);
 	   
 	   public void update(CustomersInfo customersInfo);

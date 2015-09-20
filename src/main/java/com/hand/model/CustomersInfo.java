@@ -27,7 +27,8 @@ public class CustomersInfo {
 	private String market_area;
 	private String business_manager;
 	private String business_assistant;
-	private String discount_id;
+	private int discount_id;
+	private int markup_id;
 	
 	
 	
@@ -53,7 +54,7 @@ public class CustomersInfo {
 			String port_of_destination, String shipping_mark, String status, String invoice_group, String currency,
 			String payment_method, String price_term1, String price_term2, String price_term3, String markup_name,
 			String discount_name, String market_area, String business_manager, String business_assistant,
-			String discount_id) {
+			int discount_id, int markup_id) {
 		super();
 		this.cust_name = cust_name;
 		this.type = type;
@@ -80,6 +81,7 @@ public class CustomersInfo {
 		this.business_manager = business_manager;
 		this.business_assistant = business_assistant;
 		this.discount_id = discount_id;
+		this.markup_id = markup_id;
 	}
 
 	public int getCust_id() {
@@ -282,12 +284,20 @@ public class CustomersInfo {
 		this.business_assistant = business_assistant;
 	}
 
-	public String getDiscount_id() {
+	public int getDiscount_id() {
 		return discount_id;
 	}
 
-	public void setDiscount_id(String discount_id) {
+	public void setDiscount_id(int discount_id) {
 		this.discount_id = discount_id;
+	}
+
+	public int getMarkup_id() {
+		return markup_id;
+	}
+
+	public void setMarkup_id(int markup_id) {
+		this.markup_id = markup_id;
 	}
 
 	@Override
@@ -300,9 +310,7 @@ public class CustomersInfo {
 				+ ", payment_method=" + payment_method + ", price_term1=" + price_term1 + ", price_term2=" + price_term2
 				+ ", price_term3=" + price_term3 + ", markup_name=" + markup_name + ", discount_name=" + discount_name
 				+ ", market_area=" + market_area + ", business_manager=" + business_manager + ", business_assistant="
-				+ business_assistant + ", discount_id=" + discount_id + "]";
+				+ business_assistant + ", discount_id=" + discount_id + ", markup_id=" + markup_id + "]";
 	}
-	
-	
-	
+
 }
