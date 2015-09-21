@@ -1,10 +1,8 @@
 package com.hand.service.impl;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,7 +32,6 @@ public class SpecialDiscountServiceImpl implements SpecialDiscountService {
 		this.specialDiscountDao.remove(specialDiscount);
 	}
 
-	@Test
 	@Override
 	public List<SpecialDiscount> findAll() {
 		List<SpecialDiscount> specialDiscountList = this.specialDiscountDao.findALL();

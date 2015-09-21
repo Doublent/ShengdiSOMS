@@ -45,7 +45,7 @@
 							<td><s:property value="#dar.dn_identify_num" /></td>
 							<td><s:property value="#dar.applied_amount" /></td>
 							<td><s:property value="#dar.applied_date" /></td>
-							<td><s:property value="#dar.cancel" /></td>
+							<td><s:property value="#dar.cancel" /></td>	
 							<td><s:property value="#dar.cancel_date" /></td>
 						</tr>
 					</s:iterator>

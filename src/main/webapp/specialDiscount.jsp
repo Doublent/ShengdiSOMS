@@ -26,7 +26,7 @@
 						name="specialDiscount.cust_code" />
 				</div>
 				<div class="add_find col-md-12" style="margin-top: 30px">
-					<button onclick="location.href='addSpecialDiscount.jsp'"
+					<button onclick="location.href='customerreadCodeToAddNormalJsp.action'"
 						type="button" class="btn btn-default col-md-1 col-md-offset-4">新增</button>
 					<input class="btn btn-default col-md-1 col-md-offset-1"
 						type="submit" value="查阅" />

@@ -12,7 +12,6 @@ import com.hand.service.NormalDiscountService;
 
 @Transactional
 @Service("normalDiscountService")
-// @Component("normalDiscountService")
 public class NormalDiscountServiceImpl implements NormalDiscountService {
 
 	@Autowired

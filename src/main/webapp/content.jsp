@@ -17,5 +17,6 @@
 <!--     <script src="js/bootstrap.min.js"></script> -->
 </head>
 <body>
+	<jsp:include page="login.jsp"></jsp:include>
 </body>
 </html>

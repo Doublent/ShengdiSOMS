@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50626
 File Encoding         : 65001
 
-Date: 2015-09-16 11:21:39
+Date: 2015-09-20 17:20:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,17 +28,12 @@ CREATE TABLE `om_normal_discount` (
   `Discount_rate` double(8,2) NOT NULL COMMENT '折扣率',
   `activity` varchar(2) NOT NULL DEFAULT '是' COMMENT '有效',
   PRIMARY KEY (`discount_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of om_normal_discount
 -- ----------------------------
-INSERT INTO `om_normal_discount` VALUES ('1', 'hello', 'hello', 'hello', '10', '10.00', 'Y');
-INSERT INTO `om_normal_discount` VALUES ('2', 'hello', 'hello', 'hello', '10', '10.00', 'Y');
-INSERT INTO `om_normal_discount` VALUES ('3', 'hello', 'hello', 'hello', '10', '10.00', 'Y');
-INSERT INTO `om_normal_discount` VALUES ('4', 'hello', 'hello', 'hello', '10', '10.00', '是');
-INSERT INTO `om_normal_discount` VALUES ('5', 'hello', 'hello', 'hello', '10', '10.00', '是');
-INSERT INTO `om_normal_discount` VALUES ('6', 'hello', 'hello', 'hello', '10', '10.00', '是');
-INSERT INTO `om_normal_discount` VALUES ('7', 'hello', 'hello', 'hello', '10', '10.00', '是');
-INSERT INTO `om_normal_discount` VALUES ('8', 'hello', 'hello', 'hello', '10', '10.00', '是');
-INSERT INTO `om_normal_discount` VALUES ('9', 'hello', 'hello', 'hello', '10', '10.00', '是');
+INSERT INTO `om_normal_discount` VALUES ('101', '3%折扣', '一般折扣', '金额', '0', '-0.03', '是');
+INSERT INTO `om_normal_discount` VALUES ('102', '5%折扣\r\n', '一般折扣\r\n', '单价', '0', '-0.05', '是');
+INSERT INTO `om_normal_discount` VALUES ('103', '低于50片加价5%\r\n', '通用加价\r\n', '数量\r\n', '50', '0.05', '是');
+INSERT INTO `om_normal_discount` VALUES ('104', '低于40片加价8%', '通用加价', '数量', '40', '0.08', '是');

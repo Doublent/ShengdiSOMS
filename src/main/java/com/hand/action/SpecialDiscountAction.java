@@ -97,7 +97,6 @@ public class SpecialDiscountAction extends ActionSupport {
 	/**
 	 * http://localhost:8080/ShengdiSOMS/specialDiscountAction!listSpecialDiscount.action
 	 */
-	@Test
 	public String listSpecialDiscount() {
 		System.out.println("List SpecialDiscount");
 		ArrayList<SpecialDiscount> specialDiscounts = (ArrayList<SpecialDiscount>) this.specialDiscountService

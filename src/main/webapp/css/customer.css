@@ -1,28 +1,66 @@
 @CHARSET "UTF-8";
-.div0{
-	text-align:center;
+.divI{
+/* 	width: 90%; */
+/* 	margin-left: 10px; */
 }
-#div1{
-/* 	margin-left: 20px; */
+.div1{
 	margin-top: 10px;
 }
-#text{
-	
+#div2{
+	margin: 0 auto;
+	width: 45%;
 }
 .longButton{
 	width: 90px;
 	margin-left: 10px;
 	margin-right: 10px;
 }
-#redline{
-	margin-top: 15px;
+.shortButton{
+	margin: auto;
 }
-#tablesize{
+.redline{
+	margin-top: 15px;
+	width: 100%;
+}
+.tablesize{
+	text-align:center;
 	margin-top:30px;
-	margin-left:10%;
-	width: 80%;
-	height: 80%;
+	width: 90%;
 }
 .trheight{
 	height: 30px;
+}
+
+.divM{
+/* 	width: 90%; */
+/* 	margin-left: 40px; */
+}
+.texthead{
+	text-align: right;
+	margin-right: -10px;
+	width: 120px;
+}
+.text{
+	text-align: right;
+}
+.longtext{
+	width: 300px;
+}
+.heighttextarea{
+	height: 80px;
+}
+.inputtext{
+/* 	text-align: right; */
+}
+.divheight{
+	height: 30px;
+}
+.divright{
+	margin-right:10%;
+	float: right;
+}
+.divmiddle{
+	margin-top:20px;
+	margin-bottom:20px;
+	margin-left: 30%;
 }

@@ -4,6 +4,11 @@
 	"http://struts.apache.org/dtds/struts-2.3.dtd">
 <struts>
 
+	<!--控制struts标签样式为null -->
+	<constant value="simple" name="struts.ui.theme"/>
+	<constant value="template" name="struts.ui.templateDir"/>
+	<constant value="ftl" name="struts.ui.templateSuffix"/>
+
 	<!-- 是否启用开发模式,详细错误提示 (开发时设置为true,发布到生产环境后设置为false) -->
 	<constant name="struts.devMode" value="true"/>
 	
@@ -44,7 +49,21 @@
 	<constant name="struts.dispatcher.parametersWorkaround" value="false"/>
 	
 
-	<package name="basePackage" extends="struts-default">
+	<package name="basePackage" namespace="" extends="struts-default">
+		
+		<interceptors>
+			<interceptor name="CheckLoginInterceptor" class="com.hand.action.CheckLoginInterceptor">
+			</interceptor>
+			
+			<interceptor-stack name="AllInterceptor">
+				<interceptor-ref name="CheckLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="AllInterceptor"></default-interceptor-ref>
+		<global-results>
+			<result name="unLogin">/unLogin.jsp</result>
+		</global-results>
 		
 		<!-- 新建客户 -->
 		<action name="customer*" class="com.hand.action.CustomerInfoAction" method="{1}">
@@ -54,6 +73,7 @@
 			<result name="list">/customerInquiry.jsp</result>
 			<result name="check">/checkCustomer.jsp</result>
 			<result name="edit">/customerEdit.jsp</result>
+			<result name="readCodeToAddNormalJsp">/addSpecialDiscount.jsp</result>
 		</action>
 		
 	</package>

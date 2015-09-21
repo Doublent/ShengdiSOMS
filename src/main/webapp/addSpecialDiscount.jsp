@@ -48,8 +48,12 @@
 							<tr>
 								<td><input type="text" class="form-control"
 									name="specialDiscount.discount_name" /></td>
-								<td><input type="text" class="form-control" 
-									name="specialDiscount.cust_code" /></td>
+<!-- 								<td><input type="text" class="form-control"  -->
+<!-- 									name="specialDiscount.cust_code" /></td> -->
+								<td>
+									<s:select list="%{#request.cust_code}" cssClass="form-control"
+										name="specialDiscount.cust_code"/>
+								</td>
 								<td><input type="text" class="form-control"
 									name="specialDiscount.amount" /></td>
 								<td><input type="text" class="form-control"
