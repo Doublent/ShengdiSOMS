@@ -60,7 +60,7 @@ public final class body_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\r\n");
       out.write("<!-- <frameset rows=\"220px,850px\" frameborder=\"no\" style=\"width:100%;margin-left:100px;\"> -->\r\n");
       out.write("<!-- \t<frame src=\"header.jsp\" noresize=\"noresize\"> -->\r\n");
-      out.write("\t<frameset cols=\"18%,82%\" frameborder=\"no\" style=\"width:100%;height: 1000px\">\r\n");
+      out.write("\t<frameset cols=\"18%,82%\" frameborder=\"no\" style=\"width:autoheight: 1000px\">\r\n");
       out.write("\t\t<frame src=\"guide.jsp\" noresize=\"noresize\">\r\n");
       out.write("\t\t<frame src=\"content.jsp\" name=\"contentframe\" noresize=\"noresize\">\r\n");
       out.write("\t</frameset>\r\n");

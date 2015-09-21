@@ -1,4 +1,5 @@
-<%@page language="java" contentType="text/html;charset=UTF-8" %>
+<%@ page import="org.apache.struts2.components.Include" %>
+<%@page language="java" contentType="text/html;charset=UTF-8" pageEncoding="utf-8" %>
 <html>
 <head>
     <link href="http://cdn.bootcss.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
@@ -75,7 +76,7 @@
                                         <i class="glyphicon glyphicon-asterisk"></i>折扣管理
                                     </a>
                                     <ul id="discountManageList" class="nav nav-list collapse thirdmenu" style="padding-left: 30px">
-                                        <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>经常性折扣</a></li>
+                                        <li><a href="#normalDiscount" data-toggle="tab"><i class="glyphicon glyphicon-th-list"></i>经常性折扣</a></li>
                                         <li><a href="#"><i class="glyphicon glyphicon-th-list"></i>一次性折扣</a></li>
                                     </ul>
                                 </li>
@@ -116,21 +117,22 @@
                 </div>
 
                 <div id="right" class="tab-content col-md-9">
+                	<div class="tab-pane" id="normalDiscount">
+                        <jsp:include page="normalDiscount.jsp" />
+                    </div>
+                	
                     <div class="tab-pane active" id="welcome">
                         <h2>welcome</h2>
                     </div>
-                    <div class="tab-pane" id="right1">
-                        <h2>first page</h2>
+                    <div class="tab-pane" id="customerInquiry">
+                        <%--<h2>first page</h2>--%>
+                        <jsp:include page="customerInquiry.jsp" />
                     </div>
                     <div class="tab-pane" id="right2">
                         <h2>second page</h2>
                     </div>
                     <div class="tab-pane" id="right3">
                         <h2>third page</h2>
-                    </div>
-                    
-                    <div class="tab-pane" id="customerInquiry">
-	                    <jsp:include page="customerEdit.jsp"></jsp:include>
                     </div>
 
                 </div>

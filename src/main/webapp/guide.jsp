@@ -1,7 +1,7 @@
 <%@ page import="org.apache.struts2.components.Include"%>
 <%@page language="java" contentType="text/html;charset=UTF-8"
 	pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -21,26 +21,26 @@
 		<div class="container">
 			<div>
 				<ul class="breadcrumb">
-					<li><a href="#">首页</a></li>
+					<li><a href="">首页</a></li>
 				</ul>
 			</div>
 
 			<div class="row">
 				<div class="col-md-3">
 					<ul id="main-nav" class="nav nav-tabs nav-stacked">
-						<li><a href="default.jsp" data-toggle="tab"> <i
+						<li><a href="login.jsp" target="contentframe"> <i
 								class="glyphicon glyphicon-th-large"></i> 首页
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 销售订单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 发货单管理
 						</a></li>
-						<li><a href="" data-toggle="tab"> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> 制单界面
 						</a></li>
-						<li><a href=""> <i
+						<li><a href="#"> <i
 								class="glyphicon glyphicon-credit-card"></i> orderbase维护
 						</a></li>
 						<li><a href="#mainDataList"
@@ -74,18 +74,22 @@
 												class="glyphicon glyphicon-th-list"></i>一次性折扣</a></li>
 									</ul></li>
 							</ul></li>
-						<li><a href=""><i class="glyphicon glyphicon-credit-card"></i>
-								系统设置 </a></li>
+						<li><a href="#"><i
+								class="glyphicon glyphicon-credit-card"></i> 系统设置 </a></li>
 
-						<li><a href=""> <i class="glyphicon glyphicon-user"></i>
-								用户管理 <%--<span class="label label-warning pull-right">5</span>--%>
-						</a></li>
-
-						<li><a href=""> <i class="glyphicon glyphicon-calendar"></i>
-								权限管理
-						</a></li>
-						<li><a href=""> <i class="glyphicon glyphicon-fire"></i>
-								报表管理
+						<li><a href="#userManager" data-toggle="collapse"
+							aria-expanded="true" class="nav-header collapsed hasdown"
+							aria-controls="userManager"><span
+								class="pull-right glyphicon glyphicon-chevron-right"></span> <i
+								class="glyphicon glyphicon-user"></i> 用户管理 </a>
+							<ul id="userManager" class="nav nav-list collapse secondmenu"
+								style="height: 0px; padding-left: 30px">
+								<li><a href="userAction!listUser.action" target="contentframe"><i
+										class="glyphicon glyphicon-user"></i>账号管理</a></li>
+								<li><a href="#"><i class="glyphicon glyphicon-th-list"></i>角色权限管理</a></li>
+							</ul>
+						<li><a href="#"> <i
+								class="glyphicon glyphicon-credit-card"></i> 报表管理
 						</a></li>
 					</ul>
 				</div>
@@ -101,8 +105,8 @@
 				if (obj.hasClass("glyphicon-chevron-right")) {
 					obj.removeClass().addClass(
 							"pull-right glyphicon glyphicon-chevron-down");
-					breadcrumb.append('<li><a href="#">' + $(this).text()
-							+ '</a></li>')
+// 					breadcrumb.append('<li><a href="#">' + $(this).text()
+// 							+ '</a></li>');
 				} else {
 					obj.removeClass().addClass(
 							"pull-right glyphicon glyphicon-chevron-right");

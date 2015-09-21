@@ -1,7 +1,9 @@
 package com.hand.dao.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
+import org.aspectj.apache.bcel.generic.RETURN;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +22,14 @@ public class UserDaoImpl implements UserDao {
 	private SessionFactory sessionFactory;
 
 	@SuppressWarnings("unchecked")
-	public boolean isExist(User user) {
-		String hql = "select u.user_id from User as u where u.username = :username and u.password = :password";
+	public List<User> isExist(User user) {
+		String hql = "from User as u where u.username = :username and u.password = :password";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setParameter("username", user.getUsername());
 		query.setParameter("password", user.getPassword());
-		List<User> result = query.list();
-		if (result.isEmpty()) {
-			System.out.println("用户不存在");
-			return false;
-		}
-		return true;
+		List<User> result = null;
+		result = query.list();
+		return result;
 	}
 
 	public void save(User user) {

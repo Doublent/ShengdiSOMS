@@ -72,7 +72,7 @@ public final class customerInquiry_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("<title>客户查询</title>\r\n");
       out.write("<link href=\"css/bootstrap.min.css\" type=\"text/css\" rel=\"stylesheet\">\r\n");
       out.write("<link href=\"css/customer.css\" type=\"text/css\" rel=\"stylesheet\">\r\n");
-      out.write("\r\n");
+      out.write("<script src=\"js/jquery-2.1.1.min.js\"></script>\r\n");
       out.write("\r\n");
       out.write("\r\n");
       out.write("</head>\r\n");
@@ -130,7 +130,7 @@ public final class customerInquiry_jsp extends org.apache.jasper.runtime.HttpJsp
       out.write("\r\n");
       out.write("\t\t\t\t\t\t\t<input class=\"longButton\" type=\"submit\" value=\"查询\" />\r\n");
       out.write("\t\t\t\t\t\t\t<button class=\"longButton\" type=\"button\"\r\n");
-      out.write("\t\t\t\t\t\t\t\tonclick=\"location.href='addCustomer.jsp'\">新建</button>\r\n");
+      out.write("\t\t\t\t\t\t\t\tonclick=\"location.href='customeraddCustomer.action'\">新建</button>\r\n");
       out.write("\t\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t\t</div>\r\n");
       out.write("\t\t\t\t</form>\r\n");

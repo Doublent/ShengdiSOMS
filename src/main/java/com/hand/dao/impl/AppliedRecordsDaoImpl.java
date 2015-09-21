@@ -3,7 +3,6 @@ package com.hand.dao.impl;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

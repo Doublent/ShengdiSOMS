@@ -53,7 +53,7 @@ public final class content_jsp extends org.apache.jasper.runtime.HttpJspBase
 
       out.write("\r\n");
       out.write("\r\n");
-      out.write("<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\r\n");
+      out.write("<!-- <!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\"> -->\r\n");
       out.write("<html>\r\n");
       out.write("<head>\r\n");
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
@@ -69,30 +69,9 @@ public final class content_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<!--     <script src=\"js/bootstrap.min.js\"></script> -->\r\n");
       out.write("</head>\r\n");
       out.write("<body>\r\n");
-      out.write("\t<div class=\"container\">\r\n");
-      out.write("\t\t<div id=\"right\" class=\"tab-content col-md-9\">\r\n");
-      out.write("\t\t\t<div class=\"tab-pane\" id=\"normalDiscount\">\r\n");
+      out.write("\t");
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "login.jsp", out, false);
       out.write("\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\r\n");
-      out.write("\t\t\t<div class=\"tab-pane active\" id=\"welcome\">\r\n");
-      out.write("\t\t\t\t<h2>welcome</h2>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div class=\"tab-pane\" id=\"customerInquiry\">\r\n");
-      out.write("\t\t\t\t<h2>customerInquiry.jsp</h2>\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div class=\"tab-pane\" id=\"normalDiscount\">\r\n");
-      out.write("\t\t\t\t<h2>normalDiscount.jsp</h2>\r\n");
-      out.write("\t\t\t\t");
-      out.write("\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t\t<div class=\"tab-pane\" id=\"specialDiscount\">\r\n");
-      out.write("\t\t\t\t<h2>specialDiscount.jsp</h2>\r\n");
-      out.write("\t\t\t\t");
-      out.write("\r\n");
-      out.write("\t\t\t</div>\r\n");
-      out.write("\t\t</div>\r\n");
-      out.write("\t</div>\r\n");
       out.write("</body>\r\n");
       out.write("</html>");
     } catch (Throwable t) {

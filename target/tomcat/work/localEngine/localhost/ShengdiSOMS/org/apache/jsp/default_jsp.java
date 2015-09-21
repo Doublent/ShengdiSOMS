@@ -57,8 +57,8 @@ public final class default_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\">\r\n");
       out.write("<title>Insert title here</title>\r\n");
       out.write("</head>\r\n");
-      out.write("<body style=\"height:auto; width:auto;\">\r\n");
-      out.write("\t<div>\r\n");
+      out.write("<body>\r\n");
+      out.write("\t<div style=\"height:auto; width:auto;margin-left:100px\">\r\n");
       out.write("\t\t<iframe src=\"header.jsp\" style=\"width: 100%; height:190px\" frameborder=\"0\"></iframe>\r\n");
       out.write("\t\t<iframe src=\"body.jsp\" style=\"width: 100%; height:1000px\" frameborder=\"0\"></iframe>\r\n");
       out.write("\t</div>\r\n");

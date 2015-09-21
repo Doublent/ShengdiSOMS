@@ -3,6 +3,10 @@ package com.hand.service.impl;
 import java.io.InputStream;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.apache.struts2.ServletActionContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,10 +42,20 @@ public class UserServiceImpl implements UserService {
 	}
 
 	public boolean isExist(User user) {
-		return this.userDao.isExist(user);
-		
+		List<User> result = this.userDao.isExist(user);
+		// System.out.println( result.get(0).toString());
+		if (result.isEmpty()) {
+			System.out.println("用户不存在");
+			return false;
+		}
+		HttpServletRequest request = ServletActionContext.getRequest();
+		HttpSession session = request.getSession();
+		// session.putValue("current_username", result);
+		User current_user = result.get(0);
+		session.setAttribute("current_user", current_user);
+		return true;
 	}
-	
+
 	@Transactional
 	@Override
 	public List<User> findAllUser() {

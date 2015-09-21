@@ -6,8 +6,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
-<body style="height:auto; width:auto;">
-	<div>
+<body>
+	<div style="height:auto; width:auto;margin-left:100px">
 		<iframe src="header.jsp" style="width: 100%; height:190px" frameborder="0"></iframe>
 		<iframe src="body.jsp" style="width: 100%; height:1000px" frameborder="0"></iframe>
 	</div>

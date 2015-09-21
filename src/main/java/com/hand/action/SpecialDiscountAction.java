@@ -9,7 +9,6 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hand.model.DiscountAppliedRecords;
@@ -97,7 +96,6 @@ public class SpecialDiscountAction extends ActionSupport {
 	/**
 	 * http://localhost:8080/ShengdiSOMS/specialDiscountAction!listSpecialDiscount.action
 	 */
-	@Test
 	public String listSpecialDiscount() {
 		System.out.println("List SpecialDiscount");
 		ArrayList<SpecialDiscount> specialDiscounts = (ArrayList<SpecialDiscount>) this.specialDiscountService

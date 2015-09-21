@@ -13,7 +13,7 @@ public interface UserDao {
 	 * @return
 	 */
 	
-	public boolean isExist(User user);
+	public List<User> isExist(User user);
 
 	public void save(User user);
 
